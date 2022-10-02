@@ -11,3 +11,5 @@ yongyou_chajet_rce (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_
 
 中间件:  
 IIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)  
+
+
