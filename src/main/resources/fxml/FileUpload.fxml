@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1105.0" prefWidth="1647.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FileUploadController">
+   <children>
+      <TextField fx:id="textField_ip" layoutX="25.0" layoutY="33.0" prefHeight="36.0" prefWidth="258.0" promptText="IP" />
+      <TextField fx:id="textField_port" layoutX="302.0" layoutY="33.0" prefHeight="36.0" prefWidth="258.0" promptText="Port" />
+      <Button fx:id="button_change" layoutX="1131.0" layoutY="33.0" mnemonicParsing="false" onMouseClicked="#clicked_change" text="change" />
+      <TextField fx:id="textField_sfile" layoutX="579.0" layoutY="33.0" prefHeight="36.0" prefWidth="258.0" promptText="Source File" />
+      <TextField fx:id="textField_dfile" layoutX="856.0" layoutY="33.0" prefHeight="36.0" prefWidth="258.0" promptText="Destination File" />
+      <TextField fx:id="textField_2" layoutX="133.0" layoutY="148.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_1" layoutX="133.0" layoutY="96.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_3" layoutX="133.0" layoutY="200.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_4" layoutX="133.0" layoutY="252.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_5" layoutX="133.0" layoutY="304.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_6" layoutX="133.0" layoutY="356.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_7" layoutX="133.0" layoutY="408.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_8" layoutX="133.0" layoutY="460.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_9" layoutX="133.0" layoutY="512.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_10" layoutX="133.0" layoutY="564.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_11" layoutX="133.0" layoutY="616.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_12" layoutX="133.0" layoutY="668.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_13" layoutX="133.0" layoutY="720.0" prefHeight="40.0" prefWidth="967.0" />
+      <TextField fx:id="textField_14" layoutX="133.0" layoutY="772.0" prefHeight="40.0" prefWidth="967.0" />
+      <Label layoutX="50.0" layoutY="106.0" text="Python HTTP" />
+      <Label layoutX="41.0" layoutY="158.0" text="Python3 HTTP" />
+      <Label layoutX="64.0" layoutY="210.0" text="Python FTP" />
+      <Label layoutX="45.0" layoutY="262.0" text="Python3 SMB" />
+      <Label layoutX="25.0" layoutY="314.0" text="PowerShell - IWR" />
+      <Label layoutX="25.0" layoutY="366.0" text="PowerShell - IEX" />
+      <Label layoutX="37.0" layoutY="418.0" text="CMD - Certutil" />
+      <Label layoutX="60.0" layoutY="470.0" text="CMD - SMB" />
+      <Label layoutX="55.0" layoutY="522.0" text="Linux - wget" />
+      <Label layoutX="66.0" layoutY="574.0" text="Linux - curl" />
+      <Label layoutX="10.0" layoutY="626.0" text="Windows Bitsadmin" />
+      <Label layoutX="25.0" layoutY="678.0" text="Windows msiexec" />
+      <Label layoutX="25.0" layoutY="730.0" text="Python Download" />
+      <Label layoutX="45.0" layoutY="782.0" text="Windows IPC$" />
+   </children>
+</AnchorPane>

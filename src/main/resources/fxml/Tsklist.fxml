@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1105.0" prefWidth="1647.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TsklistController">
+   <children>
+      <TextArea fx:id="textArea_check" layoutX="12.0" layoutY="14.0" prefHeight="823.0" prefWidth="768.0" promptText="Tasklist /scv">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="button_check" layoutX="799.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#clicked_check" prefHeight="88.0" prefWidth="435.0" text="--Tasklist--" textAlignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="textArea_res" layoutX="799.0" layoutY="117.0" prefHeight="719.0" prefWidth="435.0" />
+   </children>
+</AnchorPane>
