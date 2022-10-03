@@ -74,10 +74,10 @@ public class AttController {
                 if(getshell){
                     Boolean shell_success = exploit.getshell(url, textArea_attInfo);
                     if(shell_success) {
-                        textArea_attInfo.appendText("\n Getshell 成功 若无特别说明则默认使用冰蝎4.0.3 aes");
-                    }else {
-                        textArea_attInfo.appendText("\n shell被查杀 请进行免杀");
+                        textArea_attInfo.appendText("\n--Getshell 成功 若无特别说明则默认使用冰蝎4.0.3 aes--");
                     }
+
+
                 }
             }
 
@@ -88,14 +88,20 @@ public class AttController {
     public void initialize(){
         textArea_info.setText("------------目前EXP如下-------------");
         textArea_info.appendText("\n\nOA类------------>>>>>");
-        textArea_info.appendText("\n\n泛微：");
         textArea_info.appendText("\ne-cology workrelate_uploadOperation.jsp-RCE (默认写入冰蝎4.0.3aes)");
-        textArea_info.appendText("\ne-office logo_UploadFile.php-RCE (默认写入冰蝎4.0.3aes)");
         textArea_info.appendText("\ne-cology page_uploadOperation.jsp-RCE (暂未找到案例 仅供检测poc)");
-        textArea_info.appendText("\n\n用友：");
-        textArea_info.appendText("\nyongyou_chajet_rce (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)");
+        textArea_info.appendText("\ne-cology WorkflowServiceXml-RCE (shell详情见回显)");
+        textArea_info.appendText("\ne-cology BshServlet-RCE (可直接执行系统命令)");
+        textArea_info.appendText("\ne-office logo_UploadFile.php-RCE (默认写入冰蝎4.0.3aes)");
+
+        textArea_info.appendText("\n\nyongyou_chajet_rce (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)");
+
         textArea_info.appendText("\n\n中间件------------>>>>>");
         textArea_info.appendText("\nIIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)");
+
+        textArea_info.appendText("\n\n安全设备------------>>>>>");
+        textArea_info.appendText("\n综合安防_applyCT_fastjson-RCE(仅支持检测,自行使用ladp服务利用)");
+
         textArea_info.appendText("\n\n------------------(禁止未授权恶意攻击)---------------");
 
         textArea_info.appendText("\n\n---------小提醒，工具所用shell为冰蝎默认aes加密生成shell" +
@@ -117,6 +123,9 @@ public class AttController {
 
                     }else if(newValue.equals("中间件")){
                         listview_kinds.setItems(Kinds_Exp.middleware());
+
+                    }else if(newValue.equals("安全设备")){
+                        listview_kinds.setItems(Kinds_Exp.equipment());
                     }
         });
     }
@@ -131,10 +140,14 @@ public class AttController {
 
         }else if(listview_kinds.getSelectionModel().getSelectedItem().equals("用友-OA")){
             choiceBox_exp.setItems(Kinds_Exp.yongyouoa());
+        }
 
-
-        }else if(listview_kinds.getSelectionModel().getSelectedItem().equals("IIS")){
+        else if(listview_kinds.getSelectionModel().getSelectedItem().equals("IIS")){
             choiceBox_exp.setItems(Kinds_Exp.iis());
+        }
+
+        else if(listview_kinds.getSelectionModel().getSelectedItem().equals("海康")){
+            choiceBox_exp.setItems(Kinds_Exp.hik());
         }
     }
 }

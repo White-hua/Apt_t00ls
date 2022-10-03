@@ -62,7 +62,7 @@ public class HttpTools{
             outputStream.close();
             response = getResponse(conn, encoding);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("连接异常");
         }
         return response;
     }

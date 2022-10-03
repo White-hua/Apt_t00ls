@@ -1,9 +1,8 @@
 package Utilss;
 
-import Exp.OA.weaveroa.weaveroa_office_UploadFile;
-import Exp.OA.weaveroa.weaveroa_page_uploadOperation;
-import Exp.OA.weaveroa.weaveroa_workrelate_uploadOperation;
+import Exp.OA.weaveroa.*;
 import Exp.OA.yongyou.yongyou_chajet_upload;
+import Exp.equipment.HIKVISION.hik_applyCT_fastjson;
 import Exp.middleware.IIS.iis_put_rce;
 import core.Exploitlnterface;
 import javafx.collections.FXCollections;
@@ -41,6 +40,14 @@ public class Kinds_Exp {
         return observableList;
     }
 
+    public static ObservableList<String> equipment(){
+        ArrayList<String> equipment = new ArrayList<>();
+        equipment.add("海康");
+        equipment.add("深信服");
+        ObservableList<String> observableList = FXCollections.observableArrayList(equipment);
+        return observableList;
+    }
+
     /*---------------------OA系列-------------------------*/
 
     //泛微oa
@@ -49,6 +56,8 @@ public class Kinds_Exp {
         weaveroa.add("All");
         weaveroa.add("e-cology workrelate_uploadOperation.jsp-RCE");
         weaveroa.add("e-cology page_uploadOperation.jsp-RCE");
+        weaveroa.add("e-cology WorkflowServiceXml-RCE");
+        weaveroa.add("e-cology BshServlet-RCE");
         weaveroa.add("e-office logo_UploadFile.php-RCE");
         ObservableList<String> observableList = FXCollections.observableArrayList(weaveroa);
         return observableList;
@@ -83,26 +92,53 @@ public class Kinds_Exp {
     }
 
 
+    /*---------------------安全设备-------------------------*/
+
+    //海康
+    public static ObservableList<String> hik(){
+        ArrayList<String> hik = new ArrayList<>();
+        hik.add("All");
+        hik.add("综合安防_applyCT_fastjson-RCE");
+        ObservableList<String> observableList = FXCollections.observableArrayList(hik);
+        return observableList;
+    }
+
+
     //根据选择的Exp返回对应的对象
     public static Exploitlnterface getExploit(String vulName){
         Exploitlnterface ei = null;
+        /*-----OA-----*/
         if(vulName.contains("workrelate_uploadOperation")){
+            //泛微
             ei = new weaveroa_workrelate_uploadOperation();
         }else if(vulName.contains("page_uploadOperation")){
             ei = new weaveroa_page_uploadOperation();
         }else if(vulName.contains("logo_UploadFile.php")){
             ei = new weaveroa_office_UploadFile();
+        }else if(vulName.contains("e-cology BshServlet-RCE")){
+            ei = new weaveroa_BshServlet();
+        }else if(vulName.contains("e-cology WorkflowServiceXml-RCE")){
+            ei = new weaveroa_WorkflowServiceXml();
         }
 
         else if(vulName.contains("chajet_upload")){
+            //用友
             ei = new yongyou_chajet_upload();
         }
 
 
         /*-----中间件-----*/
         else if(vulName.contains("iis_put_rce")){
+            //IIS
             ei = new iis_put_rce();
         }
+
+        /*-----安全设备-----*/
+        else if(vulName.contains("applyCT_fastjson-RCE")){
+            //海康
+            ei = new hik_applyCT_fastjson();
+        }
+
 
         return ei;
     }

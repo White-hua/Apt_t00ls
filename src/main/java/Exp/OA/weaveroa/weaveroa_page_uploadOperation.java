@@ -19,7 +19,7 @@ public class weaveroa_page_uploadOperation implements Exploitlnterface {
         return false;
     }
 
-    public Boolean att(String url,String path,TextArea textArea){
+    private Boolean att(String url,String path,TextArea textArea){
         Response response = HttpTools.get(url + "/page/exportImport/uploadOperation.jsp", new HashMap<String, String>(), "utf-8");
         if(response.getCode() == 200 && !response.getText().contains("error")){
             textArea.appendText("\n 漏洞疑似存在！！请联系作者补充exp！！ weaveroa_page_uploadOperation");

