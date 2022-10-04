@@ -59,7 +59,7 @@ public class AttController {
                     }
                 }
             }
-            textArea_attInfo.appendText("\n 获取shell请单选 不支持批量获取shell");
+            textArea_attInfo.appendText("\n\n获取shell请单选 不支持批量获取shell");
 
         }else if(vulname != null){
 
@@ -86,23 +86,25 @@ public class AttController {
 
     @FXML
     public void initialize(){
-        textArea_info.setText("------------目前EXP如下-------------");
-        textArea_info.appendText("\n\nOA类------------>>>>>");
+        textArea_info.setText("------------------------------------目前EXP如下--------------------------------");
+        textArea_info.appendText("\n\n<<<<<-----------------------------OA类------------------------------>>>>>");
         textArea_info.appendText("\ne-cology workrelate_uploadOperation.jsp-RCE (默认写入冰蝎4.0.3aes)");
         textArea_info.appendText("\ne-cology page_uploadOperation.jsp-RCE (暂未找到案例 仅供检测poc)");
         textArea_info.appendText("\ne-cology WorkflowServiceXml-RCE (shell详情见回显)");
         textArea_info.appendText("\ne-cology BshServlet-RCE (可直接执行系统命令)");
         textArea_info.appendText("\ne-office logo_UploadFile.php-RCE (默认写入冰蝎4.0.3aes)");
+        textArea_info.appendText("\ne-office10 OfficeServer.php-RCE (默认写入冰蝎4.0.3aes)");
+        textArea_info.appendText("\ne-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)");
 
         textArea_info.appendText("\n\nyongyou_chajet_rce (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)");
 
-        textArea_info.appendText("\n\n中间件------------>>>>>");
+        textArea_info.appendText("\n\n<<<<<---------------------------中间件---------------------------->>>>>");
         textArea_info.appendText("\nIIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)");
 
-        textArea_info.appendText("\n\n安全设备------------>>>>>");
+        textArea_info.appendText("\n\n<<<<<--------------------------安全设备---------------------------->>>>>");
         textArea_info.appendText("\n综合安防_applyCT_fastjson-RCE(仅支持检测,自行使用ladp服务利用)");
 
-        textArea_info.appendText("\n\n------------------(禁止未授权恶意攻击)---------------");
+        textArea_info.appendText("\n\n-------------------------------(禁止未授权恶意攻击)-----------------------------");
 
         textArea_info.appendText("\n\n---------小提醒，工具所用shell为冰蝎默认aes加密生成shell" +
                 "\n 若工具提示shell写入成功 但访问不存在或连接不上 请考虑免杀，修改shell位置在工具目录下Apt_config" +

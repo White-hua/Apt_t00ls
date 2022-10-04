@@ -59,6 +59,8 @@ public class Kinds_Exp {
         weaveroa.add("e-cology WorkflowServiceXml-RCE");
         weaveroa.add("e-cology BshServlet-RCE");
         weaveroa.add("e-office logo_UploadFile.php-RCE");
+        weaveroa.add("e-office10 OfficeServer.php-RCE");
+        weaveroa.add("e-mobile_6.6 messageType.do-SQlli");
         ObservableList<String> observableList = FXCollections.observableArrayList(weaveroa);
         return observableList;
     }
@@ -119,6 +121,10 @@ public class Kinds_Exp {
             ei = new weaveroa_BshServlet();
         }else if(vulName.contains("e-cology WorkflowServiceXml-RCE")){
             ei = new weaveroa_WorkflowServiceXml();
+        }else if(vulName.contains("e-mobile_6.6 messageType.do-SQlli")){
+            ei = new weaveroa_mobile6_sqlli();
+        }else if(vulName.contains("e-office10 OfficeServer.php-RCE")){
+            ei = new weaveroa_eoffice10_OfficeServer();
         }
 
         else if(vulName.contains("chajet_upload")){

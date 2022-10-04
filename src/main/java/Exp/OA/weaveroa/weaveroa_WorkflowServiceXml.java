@@ -30,7 +30,7 @@ public class weaveroa_WorkflowServiceXml implements Exploitlnterface {
             textArea.appendText("\n 存在XML实体注入 可进行getshell");
             return true;
         }else {
-            textArea.appendText("\n e-cology WorkflowServiceXml-RCE - 漏洞不存在 (出现误报请联系作者)");
+            textArea.appendText("\n e-cology WorkflowServiceXml-RCE-漏洞不存在 (出现误报请联系作者)");
             return false;
         }
     }

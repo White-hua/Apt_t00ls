@@ -23,7 +23,8 @@ public class weaveroa_page_uploadOperation implements Exploitlnterface {
         Response response = HttpTools.get(url + "/page/exportImport/uploadOperation.jsp", new HashMap<String, String>(), "utf-8");
         if(response.getCode() == 200 && !response.getText().contains("error")){
             textArea.appendText("\n 漏洞疑似存在！！请联系作者补充exp！！ weaveroa_page_uploadOperation");
-            return true;
+            System.out.println(response.getText());
+            return false;
         }else {
             textArea.appendText("\n weaveroa_page_uploadOperation - 漏洞不存在 (出现误报请联系作者)");
             return false;
