@@ -30,9 +30,14 @@ Tasklist敏感进程检测
 
 ---
 ## 配置相关  
+
 部分漏洞使用dnslog检测  请自行修改 Apt_config/dnslog下内容  
 本工具使用CEYE.IO   只需修改为自己的地址及tokent即可  
+
 ---
 ## 问题反馈
 可直接提Issu 或加我wx进群交流  
-  
+![my](https://user-images.githubusercontent.com/100954709/193801691-df73fec6-284a-450a-943a-09fe023bcde0.png)  
+
+
+
