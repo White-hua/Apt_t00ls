@@ -5,7 +5,7 @@
 e-cology workrelate_uploadOperation.jsp-RCE (默认写入冰蝎4.0.3aes)  
 e-cology page_uploadOperation.jsp-RCE (暂未找到案例 仅供检测poc)  
 e-cology BshServlet-RCE (可直接执行系统命令)  
-e-cology WorkflowServiceXml-RCE (shell详情见回显)  
+e-cology WorkflowServiceXml-RCE (默认写入内存马 冰蝎子 3.0 beta11)  
 e-office logo_UploadFile.php-RCE (默认写入冰蝎4.0.3aes)  
 e-office10 OfficeServer.php-RCE (默认写入冰蝎4.0.3aes)  
 e-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)  
