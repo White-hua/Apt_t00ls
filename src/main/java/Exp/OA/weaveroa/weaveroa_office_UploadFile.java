@@ -39,7 +39,7 @@ public class weaveroa_office_UploadFile implements Exploitlnterface {
             System.out.println("到这了");
             System.out.println(response.getText());
             if(response.getText().contains(shell.test_payload)){
-                textArea.appendText("\n 漏洞存在 测试文件写入成功 \n 地址为："+ url + "/images/logo/logo-eoffice.php");
+                textArea.appendText("\n 漏洞存在 测试文件写入成功 \n "+ url + "/images/logo/logo-eoffice.php");
                 return true;
             }else {
                 textArea.appendText("\n 漏洞可能存在，疑似WAF拦截，请手动复现");

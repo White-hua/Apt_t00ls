@@ -1,10 +1,14 @@
 package Controller;
 
 import Utilss.Kinds_Exp;
+import Utilss.shell;
 import core.Exploitlnterface;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+
+import java.io.IOException;
 
 public class AttController {
     @FXML
@@ -30,6 +34,104 @@ public class AttController {
 
     @FXML
     private ChoiceBox<String> choiceBox_kinds;
+
+    @FXML
+    private Button button_jsp;
+
+    @FXML
+    private Button button_jspx;
+
+    @FXML
+    private Button button_asp;
+
+    @FXML
+    private Button button_aspx;
+
+    @FXML
+    private Button button_dnslog_token;
+
+    @FXML
+    private Button button_dnslog;
+
+    @FXML
+    private Button button_php;
+
+    @FXML
+    void clicked_jsp(MouseEvent event) {
+        Runtime run = Runtime.getRuntime();
+        //path:文件路径
+        try {
+            run.exec("notepad " + shell.Jsppath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void clicked_jspx(MouseEvent event) {
+        Runtime run = Runtime.getRuntime();
+        //path:文件路径
+        try {
+            run.exec("notepad " + shell.Jspxpath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void clicked_asp(MouseEvent event) {
+        Runtime run = Runtime.getRuntime();
+        //path:文件路径
+        try {
+            run.exec("notepad " + shell.Asppath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void clicked_aspx(MouseEvent event) {
+        Runtime run = Runtime.getRuntime();
+        //path:文件路径
+        try {
+            run.exec("notepad " + shell.Aspxpath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void clicked_php(MouseEvent event) {
+        Runtime run = Runtime.getRuntime();
+        //path:文件路径
+        try {
+            run.exec("notepad " + shell.Phppath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void clicked_dnslog(MouseEvent event) {
+        Runtime run = Runtime.getRuntime();
+        //path:文件路径
+        try {
+            run.exec("notepad " + shell.dnspath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void clicked_dnslog_token(MouseEvent event) {
+        Runtime run = Runtime.getRuntime();
+        //path:文件路径
+        try {
+            run.exec("notepad " + shell.dnscofpath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void Att_clicked(MouseEvent event){         //ATT按钮
@@ -59,7 +161,7 @@ public class AttController {
                     }
                 }
             }
-            textArea_attInfo.appendText("\n\n获取shell请单选 不支持批量获取shell");
+            textArea_attInfo.appendText("\n\n获取shell请单选 不支持批量getshell");
 
         }else if(vulname != null){
 
@@ -90,13 +192,15 @@ public class AttController {
         textArea_info.appendText("\n\n<<<<<-----------------------------OA类------------------------------>>>>>");
         textArea_info.appendText("\ne-cology workrelate_uploadOperation.jsp-RCE (默认写入冰蝎4.0.3aes)");
         textArea_info.appendText("\ne-cology page_uploadOperation.jsp-RCE (暂未找到案例 仅供检测poc)");
-        textArea_info.appendText("\ne-cology WorkflowServiceXml-RCE (shell详情见回显)");
+        textArea_info.appendText("\ne-cology WorkflowServiceXml-RCE (默认写入内存马 冰蝎 3.0 beta11)");
         textArea_info.appendText("\ne-cology BshServlet-RCE (可直接执行系统命令)");
         textArea_info.appendText("\ne-office logo_UploadFile.php-RCE (默认写入冰蝎4.0.3aes)");
         textArea_info.appendText("\ne-office10 OfficeServer.php-RCE (默认写入冰蝎4.0.3aes)");
         textArea_info.appendText("\ne-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)");
 
-        textArea_info.appendText("\n\nyongyou_chajet_rce (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)");
+        textArea_info.appendText("\n\nyongyou_chajet-RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)");
+        textArea_info.appendText("\nyongyou_NC_bsh.servlet.BshServlet-RCE (可直接执行系统命令)");
+        textArea_info.appendText("\nyongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)");
 
         textArea_info.appendText("\n\n<<<<<---------------------------中间件---------------------------->>>>>");
         textArea_info.appendText("\nIIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)");
@@ -113,6 +217,9 @@ public class AttController {
         //设置自动换行
         textArea_info.setWrapText(true);
         textArea_attInfo.setWrapText(true);
+
+        //适配屏幕
+        System.setProperty("prism.allowhidpi", "true");
 
         //返回kinds 下拉框内容
         choiceBox_kinds.setItems(Kinds_Exp.kinds());

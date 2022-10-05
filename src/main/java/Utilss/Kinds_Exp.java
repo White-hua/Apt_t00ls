@@ -2,6 +2,8 @@ package Utilss;
 
 import Exp.OA.weaveroa.*;
 import Exp.OA.yongyou.yongyou_chajet_upload;
+import Exp.OA.yongyou.yongyou_nc_BshServlet;
+import Exp.OA.yongyou.yongyou_nc_NCFindWeb;
 import Exp.equipment.HIKVISION.hik_applyCT_fastjson;
 import Exp.middleware.IIS.iis_put_rce;
 import core.Exploitlnterface;
@@ -77,7 +79,9 @@ public class Kinds_Exp {
     public static ObservableList<String> yongyouoa(){
         ArrayList<String> yongyouoa = new ArrayList<>();
         yongyouoa.add("All");
-        yongyouoa.add("chajet_upload");
+        yongyouoa.add("chajet_upload-RCE");
+        yongyouoa.add("NC_bsh.servlet.BshServlet-RCE");
+        yongyouoa.add("NC_NCFindWeb-Directory");
         ObservableList<String> observableList = FXCollections.observableArrayList(yongyouoa);
         return observableList;
     }
@@ -127,9 +131,13 @@ public class Kinds_Exp {
             ei = new weaveroa_eoffice10_OfficeServer();
         }
 
-        else if(vulName.contains("chajet_upload")){
+        else if(vulName.contains("chajet_upload-RCE")){
             //用友
             ei = new yongyou_chajet_upload();
+        }else if(vulName.contains("NC_bsh.servlet.BshServlet-RCE")){
+            ei = new yongyou_nc_BshServlet();
+        }else if(vulName.contains("NC_NCFindWeb")){
+            ei = new yongyou_nc_NCFindWeb();
         }
 
 

