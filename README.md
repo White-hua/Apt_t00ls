@@ -5,20 +5,27 @@
 e-cology workrelate_uploadOperation.jsp-RCE (默认写入冰蝎4.0.3aes)  
 e-cology page_uploadOperation.jsp-RCE (暂未找到案例 仅供检测poc)  
 e-cology BshServlet-RCE (可直接执行系统命令)  
-e-cology WorkflowServiceXml-RCE (默认写入内存马 冰蝎子 3.0 beta11)  
+e-cology WorkflowServiceXml-RCE (默认写入内存马 冰蝎 3.0 beta11)  
 e-office logo_UploadFile.php-RCE (默认写入冰蝎4.0.3aes)  
 e-office10 OfficeServer.php-RCE (默认写入冰蝎4.0.3aes)  
 e-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)  
 
 用友:  
-yongyou_chajet_rce (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)  
+yongyou_chajet_RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)  
+yongyou_NC_bsh.servlet.BshServlet_RCE (可直接执行系统命令)  
+yongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)  
 
 中间件:  
 IIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)  
 
 安全设备:  
 综合安防_applyCT_fastjson-RCE(仅支持检测,自行使用ladp服务利用)  
-
+  
+使用截图：  
+![1](https://user-images.githubusercontent.com/100954709/193958411-6535df75-f731-435b-af43-2bfedb2bf271.png)  
+![2](https://user-images.githubusercontent.com/100954709/193958423-8eef5bd3-1da0-458b-a5db-8c46809e9fd3.png)  
+![3](https://user-images.githubusercontent.com/100954709/193958439-cdaf1a64-55f4-4afb-9a44-cfec5e237208.png)  
+  
 ---
 ## 工具模块:  
 
