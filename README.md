@@ -14,7 +14,7 @@ e-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)
 yongyou_chajet_RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)  
 yongyou_NC_bsh.servlet.BshServlet_RCE (可直接执行系统命令)  
 yongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)  
-
+  
 中间件:  
 IIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)  
 
