@@ -10,17 +10,29 @@ e-office logo_UploadFile.php-RCE (默认写入冰蝎4.0.3aes)
 e-office10 OfficeServer.php-RCE (默认写入冰蝎4.0.3aes)  
 e-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)  
 
+蓝凌：  
+landray_datajson-RCE (可直接执行系统命令)  
+landray_treexmlTmpl-RCE (可直接执行系统命令)  
+landray_sysSearchMain-RCE (多个payload，写入哥斯拉 3.03 密码 yes)  
+
 用友:  
 yongyou_chajet_RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)  
+yongyou_NC_FileReceiveServlet-RCE 反序列化rce (默认写入冰蝎4.0.3aes)  
 yongyou_NC_bsh.servlet.BshServlet_RCE (可直接执行系统命令)  
 yongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)  
-
+  
 中间件:  
 IIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)  
 
 安全设备:  
 综合安防_applyCT_fastjson-RCE(仅支持检测,自行使用ladp服务利用)  
-
+网康下一代防火墙_ngfw_waf_route-RCE(写入菜刀shell 密码:nishizhu)  
+  
+使用截图：  
+![1](https://user-images.githubusercontent.com/100954709/193958411-6535df75-f731-435b-af43-2bfedb2bf271.png)  
+![2](https://user-images.githubusercontent.com/100954709/193958423-8eef5bd3-1da0-458b-a5db-8c46809e9fd3.png)  
+![3](https://user-images.githubusercontent.com/100954709/193958439-cdaf1a64-55f4-4afb-9a44-cfec5e237208.png)  
+  
 ---
 ## 工具模块:  
 
@@ -38,7 +50,8 @@ Tasklist敏感进程检测
 
 ---
 ## 问题反馈
-可直接提Issu 或加我wx进群交流  
+可直接提Issu  
+或加我wx进群交流，微信请备注apt  
   
 ![my](https://user-images.githubusercontent.com/100954709/193801691-df73fec6-284a-450a-943a-09fe023bcde0.png)  
 

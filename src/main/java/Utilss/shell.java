@@ -34,6 +34,7 @@ public class shell {
     public static String dnspath = "./Apt_config/dnslog/dnslog.txt";
 
 
+    //标记内容
     public static String test_payload = "9df37afc77bdd582d90aefaf4e35c63e";
 
     public static String readFile(String path){
@@ -138,5 +139,18 @@ public class shell {
 
         total = total + "\n远程桌面pid为" + str2 + '\n' + "netstat -ano|findstr \"" + str2 +"\"\n查找远程端口";
         return total;
+    }
+
+    public static String hexStr2Str(String hexStr) {
+        String str = "0123456789ABCDEF";
+        char[] hexs = hexStr.toCharArray();
+        byte[] bytes = new byte[hexStr.length() / 2];
+        int n;
+        for (int i = 0; i < bytes.length; i++) {
+            n = str.indexOf(hexs[2 * i]) * 16;
+            n += str.indexOf(hexs[2 * i + 1]);
+            bytes[i] = (byte) (n & 0xff);
+        }
+        return new String(bytes);
     }
 }

@@ -161,7 +161,7 @@ public class AttController {
                     }
                 }
             }
-            textArea_attInfo.appendText("\n\n获取shell请单选 不支持批量getshell");
+            textArea_attInfo.appendText("\n\n如需获取shell请勾选 getshell并选择具体漏洞");
 
         }else if(vulname != null){
 
@@ -189,7 +189,6 @@ public class AttController {
     @FXML
     public void initialize(){
         textArea_info.setText("------------------------------------目前EXP如下--------------------------------");
-        textArea_info.appendText("\n\n<<<<<-----------------------------OA类------------------------------>>>>>");
         textArea_info.appendText("\ne-cology workrelate_uploadOperation.jsp-RCE (默认写入冰蝎4.0.3aes)");
         textArea_info.appendText("\ne-cology page_uploadOperation.jsp-RCE (暂未找到案例 仅供检测poc)");
         textArea_info.appendText("\ne-cology WorkflowServiceXml-RCE (默认写入内存马 冰蝎 3.0 beta11)");
@@ -198,15 +197,19 @@ public class AttController {
         textArea_info.appendText("\ne-office10 OfficeServer.php-RCE (默认写入冰蝎4.0.3aes)");
         textArea_info.appendText("\ne-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)");
 
+        textArea_info.appendText("\n\nlandray_sysSearchMain-RCE (多个payload，写入哥斯拉 3.03 密码 yes)");
+        textArea_info.appendText("\nlandray_treexmlTmpl-RCE (可直接执行系统命令)");
+        textArea_info.appendText("\nlandray_datajson-RCE (可直接执行系统命令)");
+
         textArea_info.appendText("\n\nyongyou_chajet-RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)");
         textArea_info.appendText("\nyongyou_NC_bsh.servlet.BshServlet-RCE (可直接执行系统命令)");
         textArea_info.appendText("\nyongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)");
+        textArea_info.appendText("\nyongyou_NC_FileReceiveServlet-RCE (默认写入冰蝎4.0.3aes)");
 
-        textArea_info.appendText("\n\n<<<<<---------------------------中间件---------------------------->>>>>");
-        textArea_info.appendText("\nIIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)");
+        textArea_info.appendText("\n\nIIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)");
 
-        textArea_info.appendText("\n\n<<<<<--------------------------安全设备---------------------------->>>>>");
-        textArea_info.appendText("\n综合安防_applyCT_fastjson-RCE(仅支持检测,自行使用ladp服务利用)");
+        textArea_info.appendText("\n\n综合安防_applyCT_fastjson-RCE(仅支持检测,自行使用ladp服务利用)");
+        textArea_info.appendText("\n网康下一代防火墙_ngfw_waf_route-RCE(写入菜刀shell 密码:nishizhu)");
 
         textArea_info.appendText("\n\n-------------------------------(禁止未授权恶意攻击)-----------------------------");
 
@@ -257,6 +260,8 @@ public class AttController {
 
         else if(listview_kinds.getSelectionModel().getSelectedItem().equals("海康")){
             choiceBox_exp.setItems(Kinds_Exp.hik());
+        }else if(listview_kinds.getSelectionModel().getSelectedItem().equals("奇安信")){
+            choiceBox_exp.setItems(Kinds_Exp.qianxin());
         }
     }
 }

@@ -18,6 +18,7 @@ public class hik_applyCT_fastjson implements Exploitlnterface {
 
     @Override
     public Boolean getshell(String url, TextArea textArea) {
+        textArea.appendText("\n 该漏洞不支持getshell  请自行开启ladp服务利用");
         return false;
     }
 

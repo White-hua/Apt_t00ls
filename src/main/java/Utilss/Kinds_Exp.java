@@ -1,10 +1,15 @@
 package Utilss;
 
+import Exp.OA.landrayoa.landray_datajson;
+import Exp.OA.landrayoa.landray_sysSearchMain;
+import Exp.OA.landrayoa.landray_treexmlTmpl;
 import Exp.OA.weaveroa.*;
 import Exp.OA.yongyou.yongyou_chajet_upload;
 import Exp.OA.yongyou.yongyou_nc_BshServlet;
+import Exp.OA.yongyou.yongyou_nc_FileReceiveServlet;
 import Exp.OA.yongyou.yongyou_nc_NCFindWeb;
 import Exp.equipment.HIKVISION.hik_applyCT_fastjson;
+import Exp.equipment.qianxin.ngfw_waf_router;
 import Exp.middleware.IIS.iis_put_rce;
 import core.Exploitlnterface;
 import javafx.collections.FXCollections;
@@ -46,6 +51,7 @@ public class Kinds_Exp {
         ArrayList<String> equipment = new ArrayList<>();
         equipment.add("海康");
         equipment.add("深信服");
+        equipment.add("奇安信");
         ObservableList<String> observableList = FXCollections.observableArrayList(equipment);
         return observableList;
     }
@@ -71,6 +77,9 @@ public class Kinds_Exp {
     public static ObservableList<String> landrayoa(){
         ArrayList<String> landrayoa = new ArrayList<>();
         landrayoa.add("All");
+        landrayoa.add("landray_sysSearchMain.do-RCE");
+        landrayoa.add("landray_treexmlTmpl-RCE");
+        landrayoa.add("landray_datajson-RCE");
         ObservableList<String> observableList = FXCollections.observableArrayList(landrayoa);
         return observableList;
     }
@@ -82,6 +91,7 @@ public class Kinds_Exp {
         yongyouoa.add("chajet_upload-RCE");
         yongyouoa.add("NC_bsh.servlet.BshServlet-RCE");
         yongyouoa.add("NC_NCFindWeb-Directory");
+        yongyouoa.add("NC_FileReceiveServlet-RCE");
         ObservableList<String> observableList = FXCollections.observableArrayList(yongyouoa);
         return observableList;
     }
@@ -106,6 +116,14 @@ public class Kinds_Exp {
         hik.add("All");
         hik.add("综合安防_applyCT_fastjson-RCE");
         ObservableList<String> observableList = FXCollections.observableArrayList(hik);
+        return observableList;
+    }
+
+    public static ObservableList<String> qianxin(){
+        ArrayList<String> qianxin = new ArrayList<>();
+        qianxin.add("All");
+        qianxin.add("网康防火墙_NGFW_waf_router-RCE");
+        ObservableList<String> observableList = FXCollections.observableArrayList(qianxin);
         return observableList;
     }
 
@@ -138,6 +156,17 @@ public class Kinds_Exp {
             ei = new yongyou_nc_BshServlet();
         }else if(vulName.contains("NC_NCFindWeb")){
             ei = new yongyou_nc_NCFindWeb();
+        }else if(vulName.contains("NC_FileReceiveServlet-RCE")){
+            ei = new yongyou_nc_FileReceiveServlet();
+        }
+
+        else if(vulName.contains("landray_sysSearchMain.do-RCE")){
+            //蓝凌
+            ei = new landray_sysSearchMain();
+        }else if(vulName.contains("landray_treexmlTmpl-RCE")){
+            ei = new landray_treexmlTmpl();
+        }else if(vulName.contains("landray_datajson-RCE")){
+            ei = new landray_datajson();
         }
 
 
@@ -152,6 +181,12 @@ public class Kinds_Exp {
             //海康
             ei = new hik_applyCT_fastjson();
         }
+
+        else if(vulName.contains("NGFW_waf_router-RCE")){
+            //奇安信网康
+            ei = new ngfw_waf_router();
+        }
+
 
 
         return ei;

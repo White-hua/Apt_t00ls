@@ -108,8 +108,9 @@ public class HttpTools{
 
             OutputStream out = new DataOutputStream(coon.getOutputStream());
             File file = new File(filePath);
-            out.write(start_data);
-
+            if(start_data != null) {
+                out.write(start_data);
+            }
             DataInputStream in = new DataInputStream(new FileInputStream(file));
             byte[] bufferOut = new byte[1024];
             int bytes = 0;
@@ -118,7 +119,9 @@ public class HttpTools{
             }
             out.write("\r\n".getBytes());
             in.close();
-            out.write(end_data);
+            if(end_data != null) {
+                out.write(end_data);
+            }
             out.flush();
             out.close();
 
