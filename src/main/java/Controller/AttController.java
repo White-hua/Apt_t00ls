@@ -155,14 +155,12 @@ public class AttController {
 
     //如果是all
     if (vulname != null && vulname.equals("All")) {
-
+      choiceBox_exp.getItems().remove(0);
       for (String val : choiceBox_exp.getItems()) {
-        if (!val.equals("All")) {
           Exploitlnterface exploit = Kinds_Exp.getExploit(val);
           Boolean aBoolean = exploit.checkVul(url, textArea_attInfo);
           if (aBoolean) {
             textArea_attInfo.appendText("\n----" + val + "漏洞存在----\n");
-          }
         }
       }
       textArea_attInfo.appendText("\n\n如需获取shell请勾选 getshell并选择具体漏洞");
