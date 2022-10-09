@@ -3,6 +3,7 @@ package Exp.OA.weaveroa;
 import Utilss.HttpTools;
 import Utilss.Response;
 import Utilss.shell;
+import cn.hutool.core.util.StrUtil;
 import core.Exploitlnterface;
 import javafx.scene.control.TextArea;
 import java.util.HashMap;
@@ -26,6 +27,14 @@ public class weaveroa_workrelate_uploadOperation implements Exploitlnterface{
     }
 
     private Boolean att(String url,String path,TextArea textArea,String filename){
+        String color="-fx-text-fill: black";
+        if (StrUtil.isBlank(url)){
+            textArea.appendText("请填写URL！！！");
+           color="-fx-text-fill: red";
+            textArea.setStyle(color+"; -fx-font-size: 16px;");
+            throw new RuntimeException("URL 不存在");
+        }
+      textArea.setStyle(color+"; -fx-font-size: 16px;");
         this.headers.put("Content-Type","multipart/form-data;boundary=----WebKitFormBoundarymVk33liI64J7GQaK");
         String fir_post = "------WebKitFormBoundarymVk33liI64J7GQaK\r\n" +
                 "Content-Disposition: form-data; name=\"secId\"\r\n" +

@@ -3,6 +3,7 @@ package Exp.OA.yongyou;
 import Utilss.HttpTools;
 import Utilss.Response;
 import Utilss.shell;
+import cn.hutool.core.util.StrUtil;
 import core.Exploitlnterface;
 import javafx.scene.control.TextArea;
 
@@ -16,8 +17,7 @@ import java.util.Map;
 public class yongyou_nc_FileReceiveServlet implements Exploitlnterface {
     @Override
     public Boolean checkVul(String url, TextArea textArea) {
-        Boolean att = att(url, textArea);
-        return att;
+        return att(url, textArea);
     }
 
     @Override
@@ -27,6 +27,10 @@ public class yongyou_nc_FileReceiveServlet implements Exploitlnterface {
     }
 
     private Boolean att(String url,TextArea textArea){
+        if (StrUtil.isBlank(url)){
+            textArea.appendText("请填写URL");
+            throw new RuntimeException("URL 不存在");
+        }
         Response response = new Response(0, (String)null, (String)null, (String)null);
         try {
             HashMap<String,String> head = new HashMap<>();
