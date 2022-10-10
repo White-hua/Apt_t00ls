@@ -3,6 +3,17 @@ package Controller;
 import Utilss.Kinds_Exp;
 import Utilss.shell;
 import core.Exploitlnterface;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletionService;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorCompletionService;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -11,7 +22,9 @@ public class AttController {
 
   private final Kinds_Exp exp = new Kinds_Exp();//初始化EXP相关数据
 
-
+  private final ExecutorService service = Executors.newCachedThreadPool();
+  private final CompletionService<HashMap<String, Object>> completionService = new ExecutorCompletionService<>(
+      service);
   private boolean initialized = false;//是否初始化
 
   @FXML
@@ -156,17 +169,41 @@ public class AttController {
     //如果是all
     if (vulname != null && vulname.equals("All")) {
 
-      for (String val : choiceBox_exp.getItems()) {
-        if (!val.equals("All")) {
+      textArea_attInfo.clear();
+
+      // choiceBox_exp.getItems().remove(0);
+      // if (!val.equals("All")) {
+      //   Exploitlnterface exploit = Kinds_Exp.getExploit(val);
+      //   Boolean aBoolean = exploit.checkVul(url, textArea_attInfo);
+      //   if (aBoolean) {
+      //     textArea_attInfo.appendText("\n----" + val + "漏洞存在----\n");
+      //   }
+      // }
+      ObservableList<String> items = choiceBox_exp.getItems();
+      for (int i = 1; i < items.size(); i++) {
+        String val = items.get(i);
+        service.submit(() -> {
           Exploitlnterface exploit = Kinds_Exp.getExploit(val);
           Boolean aBoolean = exploit.checkVul(url, textArea_attInfo);
-          if (aBoolean) {
-            textArea_attInfo.appendText("\n----" + val + "漏洞存在----\n");
-          }
-        }
+          HashMap<String, Object> map = new HashMap<>();
+          map.put("result", aBoolean);
+          map.put("name", val);
+          return map;
+        });
       }
-      textArea_attInfo.appendText("\n\n如需获取shell请勾选 getshell并选择具体漏洞");
+      // ObservableList<String> items = choiceBox_exp.getItems();
 
+      // for (int i = 0; i < items.size(); i++) {
+      //   String val = items.get(i);
+      //   HashMap<String, Object> map = completionService.take().get();
+      //   service.execute(() -> {
+      //     boolean result = Boolean.parseBoolean(map.get("result").toString());
+      //     String s = result ? "" : "不";
+      //     textArea_attInfo.appendText(
+      //         "\n----" + map.get("name").toString() + "漏洞" + s + "存在----\n");
+      //   });
+      // }
+      textArea_attInfo.appendText("\n\n如需获取shell请勾选 getshell并选择具体漏洞");
     } else if (vulname != null) {
 
       //生成exp对应类对象
