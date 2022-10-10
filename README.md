@@ -25,11 +25,17 @@ landray_sysSearchMain-RCE (多个payload，写入哥斯拉 3.03 密码 yes)
 yongyou_chajet_RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)  
 yongyou_NC_FileReceiveServlet-RCE 反序列化rce (默认写入冰蝎4.0.3aes)  
 yongyou_NC_bsh.servlet.BshServlet_RCE (可直接执行系统命令)  
-yongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)
+yongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)  
+yongyou_GRP_UploadFileData-RCE(默认写入冰蝎4.0.3aes)  
 
 万户：  
 wanhuoa_OfficeServer-RCE(默认写入冰蝎4.0.3aes)    
 wanhuoa_OfficeServer-RCE(默认写入哥斯拉4.0.1 jsp aes 默认密码密钥)  
+wanhuoa_DocumentEdit-SQlli(mssql数据库 可 os-shell)  
+wanhuoa_fileUploadController-RCE(默认写入冰蝎4.0.3aes)  
+
+致远：  
+zhiyuanoa_main_log4j2-RCE (仅支持检测，自行开启ladp服务利用)  
   
 中间件:  
 IIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)  
