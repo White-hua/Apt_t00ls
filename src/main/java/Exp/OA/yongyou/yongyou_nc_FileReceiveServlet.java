@@ -27,10 +27,6 @@ public class yongyou_nc_FileReceiveServlet implements Exploitlnterface {
     }
 
     private Boolean att(String url,TextArea textArea){
-        if (StrUtil.isBlank(url)){
-            textArea.appendText("请填写URL");
-            throw new RuntimeException("URL 不存在");
-        }
         Response response = new Response(0, (String)null, (String)null, (String)null);
         try {
             HashMap<String,String> head = new HashMap<>();

@@ -5,7 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,8 +23,8 @@ public class TsklistController {
 
     @FXML
     void clicked_check(MouseEvent event) {
-        String tasklist =textArea_check.getText();
-        Map<String,String> exelist = new HashMap<String,String>();
+        String tasklist = textArea_check.getText();
+        Map<String, String> exelist = new HashMap<String, String>();
         String[] exetestlist = shell.readFileByLines(shell.tasklistpath);
         for (String str : exetestlist)
             if (str != null) {
@@ -32,7 +34,7 @@ public class TsklistController {
         String[] resultlist22;
         resultlist22 = shell.taskexechange(resultlist2);
         String finallist = shell.ifexe(resultlist22, exelist);
-        String res = null;
+        String res;
         try {
             res = new String(finallist.getBytes("gbk"));
             textArea_res.setText(res);

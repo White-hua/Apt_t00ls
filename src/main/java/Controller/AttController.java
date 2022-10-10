@@ -207,12 +207,19 @@ public class AttController {
     textArea_info.appendText("\nlandray_treexmlTmpl-RCE (可直接执行系统命令)");
     textArea_info.appendText("\nlandray_datajson-RCE (可直接执行系统命令)");
 
+    textArea_info.appendText("\n\nwanhu_OfficeServer-RCE (可直接执行系统命令)");
+    textArea_info.appendText("\nwanhu_smartUpload-RCE (可直接执行系统命令)");
+    textArea_info.appendText("\nwanhu_DocumentEdit-SQlli (mssql数据库 可 os-shell)");
+
     textArea_info.appendText(
         "\n\nyongyou_chajet-RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)");
     textArea_info.appendText("\nyongyou_NC_bsh.servlet.BshServlet-RCE (可直接执行系统命令)");
     textArea_info.appendText(
         "\nyongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)");
     textArea_info.appendText("\nyongyou_NC_FileReceiveServlet-RCE (默认写入冰蝎4.0.3aes)");
+    textArea_info.appendText("\nyongyou_GRP_UploadFileData-RCE (默认写入冰蝎4.0.3aes)");
+
+    textArea_info.appendText("\n\nzhiyuanoa_main_log4j2-RCE (仅支持检测)");
 
     textArea_info.appendText(
         "\n\nIIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)");
@@ -291,6 +298,12 @@ public class AttController {
         break;
       case "用友-OA":
         choiceBox_exp.setItems(exp.yongyouoa());
+        break;
+      case "万户-OA":
+        choiceBox_exp.setItems(exp.wanhuoa());
+        break;
+      case "致远-OA":
+        choiceBox_exp.setItems(exp.zhiyuanoa());
         break;
       case "IIS":
         choiceBox_exp.setItems(exp.iis());

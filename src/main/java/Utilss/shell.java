@@ -3,35 +3,38 @@ package Utilss;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.Random;
 
 public class shell {
 //     我本地测试用例！！！
-    public static String Jsppath = "D:\\Apt_config\\shell.jsp";
-    public static String Jspxpath = "D:\\Apt_config\\shell.jspx";
-    public static String Asppath = "D:\\Apt_config\\shell.asp";
-    public static String Phppath = "D:\\Apt_config\\shell.php";
-    public static String Aspxpath = "D:\\Apt_config\\shell.aspx";
-    public static String Testpath = "D:\\Apt_config\\shell.txt";
-    public static String chajetDllpath = "D:\\Apt_config\\chajet\\App_Web_nishizhu.aspx.cdcab7d2.dll";
-    public static String chajetCompiledpath = "D:\\Apt_config\\chajet\\nishizhu.aspx.cdcab7d2.compiled";
-    public static String tasklistpath = "D:\\Apt_config\\config\\tasklist.txt";
-
-    public static String dnscofpath = "D:\\Apt_config\\dnslog\\dnslogconfig.txt";
-    public static String dnspath = "D:\\Apt_config\\dnslog\\dnslog.txt";
+//    public static String Jsppath = "D:\\Apt_config\\shell.jsp";
+//    public static String Jspxpath = "D:\\Apt_config\\shell.jspx";
+//    public static String Asppath = "D:\\Apt_config\\shell.asp";
+//    public static String Phppath = "D:\\Apt_config\\shell.php";
+//    public static String Aspxpath = "D:\\Apt_config\\shell.aspx";
+//    public static String Testpath = "D:\\Apt_config\\shell.txt";
+//    public static String Gsljsppath = "D:\\Apt_config\\gsl.jsp";
+//    public static String chajetDllpath = "D:\\Apt_config\\chajet\\App_Web_nishizhu.aspx.cdcab7d2.dll";
+//    public static String chajetCompiledpath = "D:\\Apt_config\\chajet\\nishizhu.aspx.cdcab7d2.compiled";
+//    public static String tasklistpath = "D:\\Apt_config\\config\\tasklist.txt";
+//
+//    public static String dnscofpath = "D:\\Apt_config\\dnslog\\dnslogconfig.txt";
+//    public static String dnspath = "D:\\Apt_config\\dnslog\\dnslog.txt";
 
 //    生产用例
-//    public static String Jsppath = "./Apt_config/shell.jsp";
-//    public static String Jspxpath = "./Apt_config/shell.jspx";
-//    public static String Asppath = "./Apt_config/shell.asp";
-//    public static String Phppath = "./Apt_config/shell.php";
-//    public static String Aspxpath = "./Apt_config/shell.aspx";
-//    public static String Testpath = "./Apt_config/shell.txt";
-//    public static String chajetDllpath = "./Apt_config/chajet/App_Web_nishizhu.aspx.cdcab7d2.dll";
-//    public static String chajetCompiledpath = "./Apt_config/chajet/nishizhu.aspx.cdcab7d2.compiled";
-//    public static String tasklistpath = "./Apt_config/config/tasklist.txt";
-//
-//    public static String dnscofpath = "./Apt_config/dnslog/dnslogconfig.txt";
-//    public static String dnspath = "./Apt_config/dnslog/dnslog.txt";
+    public static String Jsppath = "./Apt_config/shell.jsp";
+    public static String Jspxpath = "./Apt_config/shell.jspx";
+    public static String Asppath = "./Apt_config/shell.asp";
+    public static String Phppath = "./Apt_config/shell.php";
+    public static String Aspxpath = "./Apt_config/shell.aspx";
+    public static String Testpath = "./Apt_config/shell.txt";
+    public static String Gsljsppath = "./Apt_config/gsl.jsp";
+    public static String chajetDllpath = "./Apt_config/chajet/App_Web_nishizhu.aspx.cdcab7d2.dll";
+    public static String chajetCompiledpath = "./Apt_config/chajet/nishizhu.aspx.cdcab7d2.compiled";
+    public static String tasklistpath = "./Apt_config/config/tasklist.txt";
+
+    public static String dnscofpath = "./Apt_config/dnslog/dnslogconfig.txt";
+    public static String dnspath = "./Apt_config/dnslog/dnslog.txt";
 
 
     //标记内容
@@ -60,10 +63,16 @@ public class shell {
     public static String[] readFileByLines(String fileName) {
         String[] resultlist = new String[1000];
         File file = new File(fileName);
+        FileInputStream in = null;
+        try {
+            in = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         BufferedReader reader = null;
         int i = 0;
         try {
-            reader = new BufferedReader(new FileReader(file));
+            reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
             String tempString = "";
             // 一次读入一行，直到读入null为文件结束
             while ((tempString = reader.readLine()) != null)
@@ -152,5 +161,19 @@ public class shell {
             bytes[i] = (byte) (n & 0xff);
         }
         return new String(bytes);
+    }
+
+
+    /*--生成随机字符串-*/
+    public static String getRandomString(){
+        int length = 6;
+        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random=new Random();
+        StringBuffer sb=new StringBuffer();
+        for(int i=0;i<length;i++){
+            int number=random.nextInt(62);
+            sb.append(str.charAt(number));
+        }
+        return sb.toString();
     }
 }

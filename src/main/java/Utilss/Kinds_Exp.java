@@ -3,11 +3,13 @@ package Utilss;
 import Exp.OA.landrayoa.landray_datajson;
 import Exp.OA.landrayoa.landray_sysSearchMain;
 import Exp.OA.landrayoa.landray_treexmlTmpl;
+import Exp.OA.wanhuoa.wanhu_DocumentEdit;
+import Exp.OA.wanhuoa.wanhuoa_OfficeServer;
+import Exp.OA.wanhuoa.wanhuoa_fileUploadController;
+import Exp.OA.wanhuoa.wanhuoa_smartUpload;
 import Exp.OA.weaveroa.*;
-import Exp.OA.yongyou.yongyou_chajet_upload;
-import Exp.OA.yongyou.yongyou_nc_BshServlet;
-import Exp.OA.yongyou.yongyou_nc_FileReceiveServlet;
-import Exp.OA.yongyou.yongyou_nc_NCFindWeb;
+import Exp.OA.yongyou.*;
+import Exp.OA.zhiyuanoa.zhiyuanoa_main_log4j2;
 import Exp.equipment.HIKVISION.hik_applyCT_fastjson;
 import Exp.equipment.qianxin.ngfw_waf_router;
 import Exp.middleware.IIS.iis_put_rce;
@@ -66,6 +68,8 @@ public class Kinds_Exp {
     oa.add("泛微-OA");
     oa.add("蓝凌-OA");
     oa.add("用友-OA");
+    oa.add("万户-OA");
+    oa.add("致远-OA");
     return FXCollections.observableArrayList(oa);
   }
 
@@ -119,6 +123,26 @@ public class Kinds_Exp {
     expList.add("NC_bsh.servlet.BshServlet-RCE");
     expList.add("NC_NCFindWeb-Directory");
     expList.add("NC_FileReceiveServlet-RCE");
+    expList.add("GRP_U8_UploadFileData-RCE");
+    return FXCollections.observableArrayList(expList);
+  }
+
+  //万户oa
+  public ObservableList<String> wanhuoa() {
+    expList = new ArrayList<>();
+    expList.add("All");
+    expList.add("wanhu_OfficeServer-RCE");
+    expList.add("wanhu_smartUpload-RCE");
+    expList.add("wanhu_fileUploadController-RCE");
+    expList.add("wanhu_DocumentEdit-SQLli");
+    return FXCollections.observableArrayList(expList);
+  }
+
+  //致远oa
+  public ObservableList<String> zhiyuanoa() {
+    expList = new ArrayList<>();
+    expList.add("All");
+    expList.add("zhiyuanoa_main_log4j2-RCE");
     return FXCollections.observableArrayList(expList);
   }
 
@@ -176,7 +200,9 @@ public class Kinds_Exp {
       ei = new weaveroa_mobile6_sqlli();
     } else if (vulName.contains("e-office10 OfficeServer.php-RCE")) {
       ei = new weaveroa_eoffice10_OfficeServer();
-    } else if (vulName.contains("chajet_upload-RCE")) {
+    }
+
+    else if (vulName.contains("chajet_upload-RCE")) {
       //用友
       ei = new yongyou_chajet_upload();
     } else if (vulName.contains("NC_bsh.servlet.BshServlet-RCE")) {
@@ -185,13 +211,33 @@ public class Kinds_Exp {
       ei = new yongyou_nc_NCFindWeb();
     } else if (vulName.contains("NC_FileReceiveServlet-RCE")) {
       ei = new yongyou_nc_FileReceiveServlet();
-    } else if (vulName.contains("landray_sysSearchMain.do-RCE")) {
+    }else if(vulName.contains("GRP_U8_UploadFileData-RCE")){
+      ei = new yongyou_grp_UploadFileData();
+    }
+
+    else if (vulName.contains("landray_sysSearchMain.do-RCE")) {
       //蓝凌
       ei = new landray_sysSearchMain();
     } else if (vulName.contains("landray_treexmlTmpl-RCE")) {
       ei = new landray_treexmlTmpl();
     } else if (vulName.contains("landray_datajson-RCE")) {
       ei = new landray_datajson();
+    }
+
+    else if(vulName.contains("wanhu_OfficeServer-RCE")){
+      //万户
+      ei = new wanhuoa_OfficeServer();
+    }else if(vulName.contains("wanhu_smartUpload-RCE")){
+      ei = new wanhuoa_smartUpload();
+    }else if(vulName.contains("wanhu_fileUploadController-RCE")){
+      ei = new wanhuoa_fileUploadController();
+    }else if(vulName.contains("wanhu_DocumentEdit-SQLli")){
+      ei = new wanhu_DocumentEdit();
+    }
+
+    else if(vulName.contains("zhiyuanoa_main_log4j2-RCE")){
+      //致远oa
+      ei = new zhiyuanoa_main_log4j2();
     }
 
 
