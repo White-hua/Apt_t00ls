@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import com.jfoenix.controls.*?>
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="920.0" minWidth="1400.0" prefHeight="798.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.VBox?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="920.0" minWidth="1400.0" prefHeight="798.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
    <children>
       <MenuBar>
         <menus>
@@ -33,21 +35,20 @@
       <JFXTabPane prefHeight="894.0" prefWidth="1400.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
 
-
-          <Tab text="ATT">
+          <Tab text="ATT" style="-fx-font-family: Arial,'Microsoft YaHei',Serif">
             <content>
               <fx:include source="Att.fxml" />
             </content>
           </Tab>
 
 
-          <Tab text="Tasklist">
+          <Tab text="Tasklist" style="-fx-font-family: Arial,'Microsoft YaHei',Serif">
             <content>
               <fx:include source="Tsklist.fxml" />
             </content>
           </Tab>
 
-          <Tab text="Command Create">
+          <Tab text="Command Create" style="-fx-font-family: Arial,'Microsoft YaHei',Serif">
             <content>
               <fx:include source="commandCreate.fxml" />
             </content>

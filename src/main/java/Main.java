@@ -12,7 +12,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(ResourceUtil.getResource("fxml/Main.fxml"));
         primaryStage.setTitle("APT");
         Scene scene = new Scene(root,1280,910);
-        scene.getStylesheets().add(Main.class.getResource("/css/main.css").toExternalForm());
+        // scene.getStylesheets().add(Objects.requireNonNull(Main.class.getResource("/css/main.css")).toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
