@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1105.0" prefWidth="1647.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.commandCreate.FileUploadController">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1105.0" prefWidth="1647.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.commandCreate.FileUploadController">
    <children>
       <TextField fx:id="textField_ip" layoutX="25.0" layoutY="26.0" prefHeight="36.0" prefWidth="258.0" promptText="IP" />
       <TextField fx:id="textField_port" layoutX="302.0" layoutY="26.0" prefHeight="36.0" prefWidth="258.0" promptText="Port" />
