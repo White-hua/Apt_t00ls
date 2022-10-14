@@ -11,9 +11,11 @@
 e-cology workrelate_uploadOperation.jsp-RCE (默认写入冰蝎4.0.3aes)  
 e-cology page_uploadOperation.jsp-RCE (暂未找到案例 仅供检测poc)  
 e-cology BshServlet-RCE (可直接执行系统命令)  
+e-cology KtreeUploadAction-RCE (默认写入冰蝎4.0.3aes)  
 e-cology WorkflowServiceXml-RCE (默认写入内存马 冰蝎 3.0 beta11)  
 e-office logo_UploadFile.php-RCE (默认写入冰蝎4.0.3aes)  
 e-office10 OfficeServer.php-RCE (默认写入冰蝎4.0.3aes)  
+e-office doexecl.php-RCE (写入phpinfo,需要getshell请自行利用)  
 e-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)  
 
 蓝凌：  
@@ -25,11 +27,21 @@ landray_sysSearchMain-RCE (多个payload，写入哥斯拉 3.03 密码 yes)
 yongyou_chajet_RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)  
 yongyou_NC_FileReceiveServlet-RCE 反序列化rce (默认写入冰蝎4.0.3aes)  
 yongyou_NC_bsh.servlet.BshServlet_RCE (可直接执行系统命令)  
-yongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)
+yongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)  
+yongyou_GRP_UploadFileData-RCE(默认写入冰蝎4.0.3aes)  
 
 万户：  
 wanhuoa_OfficeServer-RCE(默认写入冰蝎4.0.3aes)    
 wanhuoa_OfficeServer-RCE(默认写入哥斯拉4.0.1 jsp aes 默认密码密钥)  
+wanhuoa_DocumentEdit-SQlli(mssql数据库 可 os-shell)  
+wanhuoa_OfficeServerservlet-RCE(默认写入冰蝎4.0.3aes)  
+wanhuoa_fileUploadController-RCE(默认写入冰蝎4.0.3aes)  
+
+致远：  
+seeyonoa_main_log4j2-RCE (仅支持检测，自行开启ladp服务利用)  
+seeyonoa_wpsAssistServlet-RCE(默认写入冰蝎4.0.3aes)  
+seeyonoa_htmlofficeservlet-RCE(默认写入冰蝎4.0.3aes)  
+seeyonoa_ajaxBypass-RCE(写入天蝎 密码sky)  
   
 中间件:  
 IIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)  
@@ -39,18 +51,23 @@ IIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)
 网康下一代防火墙_ngfw_waf_route-RCE(写入菜刀shell 密码:nishizhu)  
   
 使用截图：  
-![1](https://user-images.githubusercontent.com/100954709/193958411-6535df75-f731-435b-af43-2bfedb2bf271.png)  
-![2](https://user-images.githubusercontent.com/100954709/193958423-8eef5bd3-1da0-458b-a5db-8c46809e9fd3.png)  
+![QQ截图20221014202028](https://user-images.githubusercontent.com/100954709/195846430-84bfff61-2c7b-4027-abcc-76d5910b76e4.png)  
+![QQ截图20221014202151](https://user-images.githubusercontent.com/100954709/195846449-cbf2d0c2-e0f6-4567-b0d4-d9ead527d459.png)  
 ![3](https://user-images.githubusercontent.com/100954709/193958439-cdaf1a64-55f4-4afb-9a44-cfec5e237208.png)  
   
 ---
 ## 工具模块:  
 
 文件上传指令生成  
-<img width="962" alt="微信图片_20221002223437" src="https://user-images.githubusercontent.com/100954709/193459785-24f45480-764a-4d12-9fe8-485112bf4ef1.png">  
+ ![upload](https://user-images.githubusercontent.com/100954709/195846198-3133fd70-3849-4dfe-862c-c42dd865b214.png)  
+
 
 Tasklist敏感进程检测  
-<img width="962" alt="微信图片_20221002223828" src="https://user-images.githubusercontent.com/100954709/193459855-71f0e49a-c6e5-44f9-800c-e0aae7e995f5.png">
+![tasklist](https://user-images.githubusercontent.com/100954709/195846255-b06e35e9-718b-4b69-a203-cadb88338858.png)  
+  
+反弹shell命令生成  
+![shell](https://user-images.githubusercontent.com/100954709/195846331-474bdd57-ef97-45a5-b872-5b39de592c70.png)
+
 
 ---
 ## 配置相关  

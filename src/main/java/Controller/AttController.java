@@ -18,6 +18,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
+
 public class AttController {
 
   private final Kinds_Exp exp = new Kinds_Exp();//初始化EXP相关数据
@@ -168,11 +171,10 @@ public class AttController {
 
     //如果是all
     if (vulname != null && vulname.equals("All")) {
-
       textArea_attInfo.clear();
 
       // choiceBox_exp.getItems().remove(0);
-      // if (!val.equals("All")) {
+      // if(!val.contains("All")) {
       //   Exploitlnterface exploit = Kinds_Exp.getExploit(val);
       //   Boolean aBoolean = exploit.checkVul(url, textArea_attInfo);
       //   if (aBoolean) {
@@ -203,7 +205,10 @@ public class AttController {
       //         "\n----" + map.get("name").toString() + "漏洞" + s + "存在----\n");
       //   });
       // }
-      textArea_attInfo.appendText("\n\n如需获取shell请勾选 getshell并选择具体漏洞");
+      // textArea_attInfo.appendText("\n\n如需获取shell请勾选 getshell并选择具体漏洞");
+      Date now = new Date();
+      textArea_attInfo.appendText("\n\n如需获取shell请勾选 getshell并选择具体漏洞" + " " + now);
+
     } else if (vulname != null) {
 
       //生成exp对应类对象
@@ -237,7 +242,9 @@ public class AttController {
     textArea_info.appendText("\ne-cology page_uploadOperation.jsp-RCE (暂未找到案例 仅供检测poc)");
     textArea_info.appendText("\ne-cology WorkflowServiceXml-RCE (默认写入内存马 冰蝎 3.0 beta11)");
     textArea_info.appendText("\ne-cology BshServlet-RCE (可直接执行系统命令)");
+    textArea_info.appendText("\ne-cology KtreeUploadAction-RCE (默认写入冰蝎4.0.3aes)");
     textArea_info.appendText("\ne-office logo_UploadFile.php-RCE (默认写入冰蝎4.0.3aes)");
+    textArea_info.appendText("\ne-office doexecl.php-RCE (写入phpinfo,需要getshell请自行利用)");
     textArea_info.appendText("\ne-office10 OfficeServer.php-RCE (默认写入冰蝎4.0.3aes)");
     textArea_info.appendText("\ne-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)");
 
@@ -246,12 +253,23 @@ public class AttController {
     textArea_info.appendText("\nlandray_treexmlTmpl-RCE (可直接执行系统命令)");
     textArea_info.appendText("\nlandray_datajson-RCE (可直接执行系统命令)");
 
+    textArea_info.appendText("\n\nwanhu_OfficeServer-RCE (可直接执行系统命令)");
+    textArea_info.appendText("\nwanhu_smartUpload-RCE (可直接执行系统命令)");
+    textArea_info.appendText("\nwanhuoa_OfficeServerservlet-RCE(默认写入冰蝎4.0.3aes)");
+    textArea_info.appendText("\nwanhu_DocumentEdit-SQlli (mssql数据库 可 os-shell)");
+
     textArea_info.appendText(
         "\n\nyongyou_chajet-RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)");
     textArea_info.appendText("\nyongyou_NC_bsh.servlet.BshServlet-RCE (可直接执行系统命令)");
     textArea_info.appendText(
         "\nyongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)");
     textArea_info.appendText("\nyongyou_NC_FileReceiveServlet-RCE (默认写入冰蝎4.0.3aes)");
+    textArea_info.appendText("\nyongyou_GRP_UploadFileData-RCE (默认写入冰蝎4.0.3aes)");
+
+    textArea_info.appendText("\n\nseeyonoa_main_log4j2-RCE (仅支持检测)");
+    textArea_info.appendText("\nseeyonoa_wpsAssistServlet-RCE (默认写入冰蝎4.0.3aes)");
+    textArea_info.appendText("\nseeyonoa_htmlofficeservlet-RCE (默认写入冰蝎4.0.3aes)");
+    textArea_info.appendText("\nseeyonoa_ajaxBypass-RCE (写入天蝎 密码sky)");
 
     textArea_info.appendText(
         "\n\nIIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)");
@@ -330,6 +348,12 @@ public class AttController {
         break;
       case "用友-OA":
         choiceBox_exp.setItems(exp.yongyouoa());
+        break;
+      case "万户-OA":
+        choiceBox_exp.setItems(exp.wanhuoa());
+        break;
+      case "致远-OA":
+        choiceBox_exp.setItems(exp.zhiyuanoa());
         break;
       case "IIS":
         choiceBox_exp.setItems(exp.iis());

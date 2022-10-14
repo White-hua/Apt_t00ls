@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="920.0" minWidth="1400.0" prefHeight="798.0" prefWidth="998.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
    <children>
@@ -29,7 +30,7 @@
 
 
 
-      <TabPane prefHeight="894.0" prefWidth="1400.0" tabClosingPolicy="UNAVAILABLE">
+      <JFXTabPane prefHeight="894.0" prefWidth="1400.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
 
 
@@ -40,20 +41,19 @@
           </Tab>
 
 
-
-          <Tab text="FileUpload">
-            <content>
-              <fx:include source="FileUpload.fxml" />
-            </content>
-          </Tab>
-
           <Tab text="Tasklist">
             <content>
               <fx:include source="Tsklist.fxml" />
             </content>
           </Tab>
 
+          <Tab text="Command Create">
+            <content>
+              <fx:include source="commandCreate.fxml" />
+            </content>
+          </Tab>
+
         </tabs>
-      </TabPane>
+      </JFXTabPane>
    </children>
 </VBox>

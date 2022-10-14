@@ -11,10 +11,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(ResourceUtil.getResource("fxml/Main.fxml"));
         primaryStage.setTitle("APT");
-        primaryStage.setScene(new Scene(root, 1280, 900));
+        Scene scene = new Scene(root,1280,910);
+        scene.getStylesheets().add(Main.class.getResource("/css/main.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

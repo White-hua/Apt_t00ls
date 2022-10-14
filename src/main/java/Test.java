@@ -1,10 +1,7 @@
 import Utilss.Kinds_Exp;
-import Utilss.shell;
-import com.sun.org.apache.bcel.internal.classfile.Utility;
+import javax.xml.bind.DatatypeConverter;
 import core.Exploitlnterface;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutionException;
@@ -15,37 +12,59 @@ import java.util.concurrent.Future;
 
 public class Test {
 
-  public static void main(String[] args) throws InterruptedException, ExecutionException {
-    ExecutorService executorService = Executors.newFixedThreadPool(3);
+    public static void main(String[] args) {
 
-    CompletionService<Integer> completionService = new ExecutorCompletionService<>(executorService);
+            char[] a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".toCharArray();
+            String b = "gx74KW1roM9qwzPFVOBLSlYaeyncdNbI=JfUCQRHtj2+Z05vshXi3GAEuT/m8Dpk6";
+            char[] str = "qfTdqfTdqfTdVaxJeAJQBRl3dExQyYOdNAlfeaxsdGhiyYlTcATdbHthwalGcRu5nHzs".toCharArray();
+            String out = null;
+            for (int i = 0; i < str.length; i++) {
+                out += a[b.indexOf(str[i])];
+            }
+            System.out.println(decode(out));
 
-    Future<Integer> f1 = completionService.submit(() -> {
-      System.out.println("执行任务一");
-      Thread.sleep(5000);
-      return 1;
-    });
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
 
-    Future<Integer> f2 = completionService.submit(() -> {
-      System.out.println("执行任务二");
-      return 2;
-    });
+        CompletionService<Integer> completionService = new ExecutorCompletionService<>(executorService);
 
-    Future<Integer> f3 = completionService.submit(() -> {
-      System.out.println("执行任务三");
-      Thread.sleep(3000);
-      return 3;
-    });
+        Future<Integer> f1 = completionService.submit(() -> {
+            System.out.println("执行任务一");
+            Thread.sleep(5000);
+            return 1;
+        });
 
-    for (int i = 0; i < 3; i++) {
-      Future take = completionService.take();
-      Integer integer = (Integer) take.get();
-      executorService.execute(() -> {
-        System.out.println("执行入库==" + integer);
-      });
+        Future<Integer> f2 = completionService.submit(() -> {
+            System.out.println("执行任务二");
+            return 2;
+        });
+
+        Future<Integer> f3 = completionService.submit(() -> {
+            System.out.println("执行任务三");
+            Thread.sleep(3000);
+            return 3;
+        });
+
+        for (int i = 0; i < 3; i++) {
+            Future take = completionService.take();
+            Integer integer = (Integer) take.get();
+            executorService.execute(() -> {
+                System.out.println("执行入库==" + integer);
+            });
+        }
+        executorService.shutdown();
     }
-    executorService.shutdown();
 
-
-  }
+    public static String decode(String base64Str) {
+        // 解码后的字符串
+        String str = "";
+        // 解码
+        byte[] base64Data = DatatypeConverter.parseBase64Binary(base64Str);
+        try {
+            // byte[]-->String
+            str = new String(base64Data, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
 }

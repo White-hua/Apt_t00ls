@@ -3,6 +3,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.*?>
 
 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="850.0" prefWidth="1302.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AttController">
    <children>
@@ -10,7 +11,7 @@
       <ListView fx:id="listview_kinds" layoutX="14.0" layoutY="61.0" onMouseClicked="#listview_clicked" prefHeight="776.0" prefWidth="236.0" />
       <ChoiceBox fx:id="choiceBox_exp" layoutX="272.0" layoutY="13.0" prefHeight="36.0" prefWidth="236.0" />
       <TextArea fx:id="textArea_info" layoutX="263.0" layoutY="62.0" prefHeight="776.0" prefWidth="444.0" />
-      <TextField fx:id="textField_url" layoutX="723.0" layoutY="14.0" prefHeight="37.0" prefWidth="435.0" promptText="URL/PATH" />
+      <JFXTextField fx:id="textField_url" layoutX="723.0" layoutY="14.0" prefHeight="37.0" prefWidth="435.0" promptText="URL/PATH" />
       <Button fx:id="Button_Att" layoutX="1185.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#Att_clicked" prefHeight="35.0" prefWidth="83.0" text="ATT" />
       <TextArea fx:id="textArea_attInfo" layoutX="719.0" layoutY="62.0" prefHeight="334.0" prefWidth="549.0" />
       <RadioButton fx:id="radioButton_getshell" layoutX="603.0" layoutY="21.0" mnemonicParsing="false" text="GetShell" />

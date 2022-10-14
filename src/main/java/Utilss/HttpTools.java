@@ -11,7 +11,6 @@ import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Iterator;
-
 import Controller.MainController;
 
 public class HttpTools{
