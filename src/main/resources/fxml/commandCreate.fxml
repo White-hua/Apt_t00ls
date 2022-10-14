@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1105.0" prefWidth="1647.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CommandController">
+    <children>
+
+
+        <JFXTabPane layoutY="-1.0" prefHeight="1105.0" prefWidth="1647.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+
+
+                <Tab text="FileUpload" style="-fx-font-family: Arial,'Microsoft YaHei',Serif" >
+                    <content>
+                        <fx:include source="commandCreate/FileUpload.fxml" />
+                    </content>
+                </Tab>
+
+
+                <Tab text="Reverse Shell" style="-fx-font-family: Arial,'Microsoft YaHei',Serif">
+                    <content>
+                        <fx:include source="commandCreate/reverseShell.fxml" />
+                    </content>
+                </Tab>
+
+<!--                <Tab text="SQlmap Command" style="-fx-font-family: Arial,'Microsoft YaHei',Serif">-->
+<!--                    <content>-->
+<!--                        <fx:include source="commandCreate/SqlmapCommand.fxml" />-->
+<!--                    </content>-->
+<!--                </Tab>-->
+
+
+            </tabs>
+        </JFXTabPane>
+
+
+    </children>
+</AnchorPane>

@@ -1,0 +1,19 @@
+/* 修改Tab中背景颜色*/
+.jfx-tab-pane .headers-region {
+  -jfx-background-color: #fff;
+}
+
+.jfx-tab-pane .tab-header-background {
+  -jfx-background-color: #fff;
+}
+
+/* 修改Tab中文本的颜色 */
+.tab-label {
+  -jfx-text-fill: #383838;
+  -jfx-font-family: Arial, 'Microsoft YaHei'
+}
+
+/* 子代选择器，Tab选中的时候选择其子元素tab-label */
+.tab:selected .tab-label {
+  -jfx-text-fill: #FF0088;
+}
