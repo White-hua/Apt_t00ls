@@ -4,7 +4,6 @@ import Utilss.HttpTools;
 import Utilss.Response;
 import core.Exploitlnterface;
 import javafx.scene.control.TextArea;
-
 import java.util.HashMap;
 
 public class wanhu_DocumentEdit implements Exploitlnterface {

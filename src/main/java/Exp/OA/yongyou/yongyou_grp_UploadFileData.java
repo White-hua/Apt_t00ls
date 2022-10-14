@@ -5,7 +5,6 @@ import Utilss.Response;
 import Utilss.shell;
 import core.Exploitlnterface;
 import javafx.scene.control.TextArea;
-
 import java.util.HashMap;
 
 public class yongyou_grp_UploadFileData implements Exploitlnterface {

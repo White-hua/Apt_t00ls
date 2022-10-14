@@ -3,20 +3,19 @@ package Utilss;
 import Exp.OA.landrayoa.landray_datajson;
 import Exp.OA.landrayoa.landray_sysSearchMain;
 import Exp.OA.landrayoa.landray_treexmlTmpl;
-import Exp.OA.wanhuoa.wanhu_DocumentEdit;
-import Exp.OA.wanhuoa.wanhuoa_OfficeServer;
-import Exp.OA.wanhuoa.wanhuoa_fileUploadController;
-import Exp.OA.wanhuoa.wanhuoa_smartUpload;
+import Exp.OA.seeyonoa.seeyonoa_ajaxBypass;
+import Exp.OA.seeyonoa.seeyonoa_htmlofficeservlet;
+import Exp.OA.seeyonoa.seeyonoa_wpsAssistServlet;
+import Exp.OA.wanhuoa.*;
 import Exp.OA.weaveroa.*;
 import Exp.OA.yongyou.*;
-import Exp.OA.zhiyuanoa.zhiyuanoa_main_log4j2;
+import Exp.OA.seeyonoa.seeyonoa_main_log4j2;
 import Exp.equipment.HIKVISION.hik_applyCT_fastjson;
 import Exp.equipment.qianxin.ngfw_waf_router;
 import Exp.middleware.IIS.iis_put_rce;
 import core.Exploitlnterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.util.ArrayList;
 
 public class Kinds_Exp {
@@ -99,8 +98,10 @@ public class Kinds_Exp {
     expList.add("e-cology page_uploadOperation.jsp-RCE");
     expList.add("e-cology WorkflowServiceXml-RCE");
     expList.add("e-cology BshServlet-RCE");
+    expList.add("e-cology KreeUploadAction-RCE");
     expList.add("e-office logo_UploadFile.php-RCE");
     expList.add("e-office10 OfficeServer.php-RCE");
+    expList.add("e-office doexcel.php-RCE");
     expList.add("e-mobile_6.6 messageType.do-SQlli");
     return FXCollections.observableArrayList(expList);
   }
@@ -135,6 +136,7 @@ public class Kinds_Exp {
     expList.add("wanhu_smartUpload-RCE");
     expList.add("wanhu_fileUploadController-RCE");
     expList.add("wanhu_DocumentEdit-SQLli");
+    expList.add("wanhu_Officeserverservlet-RCE");
     return FXCollections.observableArrayList(expList);
   }
 
@@ -142,7 +144,10 @@ public class Kinds_Exp {
   public ObservableList<String> zhiyuanoa() {
     expList = new ArrayList<>();
     expList.add("All");
-    expList.add("zhiyuanoa_main_log4j2-RCE");
+    expList.add("seeyonoa_main_log4j2-RCE");
+    expList.add("seeyonoa_wpsAssisServlet-RCE");
+    expList.add("seeyonoa_htmlofficeservlet-RCE");
+    expList.add("seeyonoa_ajaxBypass-RCE");
     return FXCollections.observableArrayList(expList);
   }
 
@@ -200,6 +205,10 @@ public class Kinds_Exp {
       ei = new weaveroa_mobile6_sqlli();
     } else if (vulName.contains("e-office10 OfficeServer.php-RCE")) {
       ei = new weaveroa_eoffice10_OfficeServer();
+    }else if(vulName.contains("e-cology KreeUploadAction-RCE")){
+      ei = new weaveroa_KtreeUploadAction();
+    }else if(vulName.contains("e-office doexcel.php-RCE")){
+      ei = new weaveroa_doExecl();
     }
 
     else if (vulName.contains("chajet_upload-RCE")) {
@@ -233,11 +242,19 @@ public class Kinds_Exp {
       ei = new wanhuoa_fileUploadController();
     }else if(vulName.contains("wanhu_DocumentEdit-SQLli")){
       ei = new wanhu_DocumentEdit();
+    }else if(vulName.contains("wanhu_Officeserverservlet-RCE")){
+      ei = new wanhuoa_Officeserverservlet();
     }
 
-    else if(vulName.contains("zhiyuanoa_main_log4j2-RCE")){
+    else if(vulName.contains("seeyonoa_main_log4j2-RCE")){
       //致远oa
-      ei = new zhiyuanoa_main_log4j2();
+      ei = new seeyonoa_main_log4j2();
+    }else if(vulName.contains("seeyonoa_wpsAssisServlet-RCE")){
+      ei = new seeyonoa_wpsAssistServlet();
+    }else if(vulName.contains("seeyonoa_htmlofficeservlet-RCE")){
+      ei = new seeyonoa_htmlofficeservlet();
+    }else if(vulName.contains("seeyonoa_ajaxBypass-RCE")){
+      ei = new seeyonoa_ajaxBypass();
     }
 
 

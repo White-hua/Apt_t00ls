@@ -1,0 +1,15 @@
+/* 修改Tab中背景颜色*/
+.jfx-tab-pane .headers-region {
+    -fx-background-color: #fff;
+}
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: #fff;
+}
+/* 修改Tab中文本的颜色 */
+.tab-label {
+    -fx-text-fill: #383838;
+}
+/* 子代选择器，Tab选中的时候选择其子元素tab-label */
+.tab:selected .tab-label {
+    -fx-text-fill: #FF0088;
+}

@@ -163,7 +163,6 @@ public class shell {
         return new String(bytes);
     }
 
-
     /*--生成随机字符串-*/
     public static String getRandomString(){
         int length = 6;

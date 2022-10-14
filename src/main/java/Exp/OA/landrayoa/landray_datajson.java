@@ -5,7 +5,6 @@ import Utilss.Response;
 import Utilss.shell;
 import core.Exploitlnterface;
 import javafx.scene.control.TextArea;
-
 import java.util.HashMap;
 
 public class landray_datajson implements Exploitlnterface {
@@ -30,6 +29,7 @@ public class landray_datajson implements Exploitlnterface {
             textArea.appendText("\n漏洞存在 请自行利用\n" + url + payload);
             return true;
         }else {
+            textArea.appendText("\n landray_datajson-RCE-漏洞不存在 (出现误报请联系作者)");
             return false;
         }
 
