@@ -51,18 +51,23 @@ IIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)
 网康下一代防火墙_ngfw_waf_route-RCE(写入菜刀shell 密码:nishizhu)  
   
 使用截图：  
-![1](https://user-images.githubusercontent.com/100954709/193958411-6535df75-f731-435b-af43-2bfedb2bf271.png)  
-![2](https://user-images.githubusercontent.com/100954709/193958423-8eef5bd3-1da0-458b-a5db-8c46809e9fd3.png)  
+![QQ截图20221014202028](https://user-images.githubusercontent.com/100954709/195846430-84bfff61-2c7b-4027-abcc-76d5910b76e4.png)  
+![QQ截图20221014202151](https://user-images.githubusercontent.com/100954709/195846449-cbf2d0c2-e0f6-4567-b0d4-d9ead527d459.png)  
 ![3](https://user-images.githubusercontent.com/100954709/193958439-cdaf1a64-55f4-4afb-9a44-cfec5e237208.png)  
   
 ---
 ## 工具模块:  
 
 文件上传指令生成  
-<img width="962" alt="微信图片_20221002223437" src="https://user-images.githubusercontent.com/100954709/193459785-24f45480-764a-4d12-9fe8-485112bf4ef1.png">  
+ ![upload](https://user-images.githubusercontent.com/100954709/195846198-3133fd70-3849-4dfe-862c-c42dd865b214.png)  
+
 
 Tasklist敏感进程检测  
-<img width="962" alt="微信图片_20221002223828" src="https://user-images.githubusercontent.com/100954709/193459855-71f0e49a-c6e5-44f9-800c-e0aae7e995f5.png">
+![tasklist](https://user-images.githubusercontent.com/100954709/195846255-b06e35e9-718b-4b69-a203-cadb88338858.png)  
+  
+反弹shell命令生成  
+![shell](https://user-images.githubusercontent.com/100954709/195846331-474bdd57-ef97-45a5-b872-5b39de592c70.png)
+
 
 ---
 ## 配置相关  
