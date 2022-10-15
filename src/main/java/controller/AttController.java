@@ -1,12 +1,16 @@
 package controller;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.StrUtil;
 import core.Exploitlnterface;
+import java.util.HashMap;
 import java.util.Objects;
+import java.util.concurrent.CompletionService;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.stream.IntStream;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,6 +28,8 @@ public class AttController {
   private final Kinds_Exp exp = new Kinds_Exp();//初始化EXP相关数据
 
   private final ExecutorService service = Executors.newCachedThreadPool();
+  private final CompletionService<HashMap<String, Object>> completionService = new ExecutorCompletionService<>(
+      service);
   private boolean initialized = false;//是否初始化
 
   @FXML
@@ -33,13 +39,13 @@ public class AttController {
   private Button Button_Att;
 
   @FXML
-  private TextArea textArea_attInfo;
+  private TextArea textArea_attInfo; //ATT 结果文本域
 
   @FXML
   private TextField textField_url;
 
   @FXML
-  private TextArea textArea_info;
+  private TextArea textArea_info; //中间说明文本域
 
   @FXML
   private ChoiceBox<String> choiceBox_exp;
@@ -151,58 +157,105 @@ public class AttController {
   @FXML
   void Att_clicked(MouseEvent event) {         //ATT按钮
     //初始清空
-    textArea_attInfo.setText("");
+    Platform.runLater(() -> {
+      textArea_attInfo.clear();
+    });
     //获取url地址
     String url;
-    String trimText = textField_url.getText().trim();
-    if (trimText.endsWith("/")) {
-      url = trimText.substring(0, trimText.length() - 1);
-    } else {
-      url = trimText;
-    }
-    //获取需要利用的exp
-    String vulName = choiceBox_exp.getValue();
-    //获取get shell按钮是否被选中
-    boolean getShell = radioButton_getshell.selectedProperty().get();
-    //如果是all
-    if (vulName != null && vulName.equals("All")) {
-      textArea_attInfo.setText("");
-      ObservableList<String> items = choiceBox_exp.getItems();
-      int count = items.size() - 1;
-      if (count<=0) return;
-      CountDownLatch countDownLatch = new CountDownLatch(count);
-      // System.out.println("共："+count+"个");
-      IntStream.range(1, items.size()).mapToObj(items::get).filter(Objects::nonNull).forEach(val -> {
-        try {
-          service.submit(() -> Kinds_Exp.getExploit(val).checkVul(url, textArea_attInfo));
-        } catch (Exception e) {
-          e.printStackTrace();
-        } finally {
-          countDownLatch.countDown();
-        }
+    if (StrUtil.isBlank(textField_url.getText())) {
+      Platform.runLater(() -> {
+        textArea_attInfo.appendText("\n");
+        textArea_attInfo.appendText("请填写URL：");
       });
+      return;
+    }
+    if (textField_url.getText().trim().endsWith("/")) {
+      url = textField_url.getText().trim()
+          .substring(0, textField_url.getText().trim().length() - 1);
+    } else {
+      url = textField_url.getText().trim();
+    }
+
+    //获取需要利用的exp
+    String vulname = choiceBox_exp.getValue();
+    //获取get shell按钮是否被选中
+    Boolean getshell = radioButton_getshell.selectedProperty().get();
+
+    //如果是all
+    if (vulname != null && vulname.equals("All")) {
+      ObservableList<String> items = choiceBox_exp.getItems();
+      CountDownLatch countDownLatch = new CountDownLatch(items.size() - 1);
+
+      long start = System.currentTimeMillis();
+      for (int i = 1; i < items.size(); i++) {
+        String val = items.get(i);
+        service.submit(() -> {
+          try {
+            String x = "线程：" + Thread.currentThread().getName() + "开始";
+            System.out.println(x);
+            Exploitlnterface exploit = Kinds_Exp.getExploit(val);
+            if (exploit == null) {
+              Platform.runLater(() -> {
+                textArea_attInfo.appendText("\n");
+                textArea_attInfo.appendText("未找到EXP：" + val);
+              });
+              throw new RuntimeException("未找到EXP");
+            }
+            if (Objects.isNull(textArea_attInfo)) {
+              System.out.println("NPE debugger");
+            }
+            exploit.checkVul(url, textArea_attInfo);
+          } catch (Exception e) {
+            if (e instanceof IndexOutOfBoundsException) {
+              System.out.println("数组下标越界异常");
+            }
+            if (e instanceof NullPointerException) {
+              System.out.println("NPE异常");
+            }
+            e.printStackTrace();
+          } finally {
+            String threadName = "线程：" + Thread.currentThread().getName();
+            // String x = threadName + "结束";
+            System.out.println(threadName+" spend:" + (System.currentTimeMillis() - start) + "ms");
+            // Platform.runLater(() -> {
+            //   textArea_attInfo.appendText("\n");
+            //   textArea_attInfo.appendText(x);
+            //   textArea_attInfo.appendText("\n");
+            // });
+            countDownLatch.countDown();
+          }
+        });
+      }
+
       try {
         countDownLatch.await();
-      } catch (InterruptedException e) {
+        System.out.println("total spend:" + (System.currentTimeMillis() - start) + "ms");
+        Platform.runLater(() -> {
+          textArea_attInfo.appendText(
+              "\n\n如需获取shell请勾选 getshell并选择具体漏洞" + " " + DateUtil.now());
+        });
+      } catch (Exception e) {
         e.printStackTrace();
       }
-      textArea_attInfo.appendText("\n");
-      textArea_attInfo.appendText("\n");
-      textArea_attInfo.appendText(
-          "如需获取shell请勾选 getshell并选择具体漏洞" + " " + DateUtil.now());
 
-    } else if (vulName != null) {
+
+    } else if (vulname != null) {
 
       //生成exp对应类对象
-      Exploitlnterface exploit = Kinds_Exp.getExploit(vulName);
+      Exploitlnterface exploit = Kinds_Exp.getExploit(vulname);
       //检查是否存在漏洞
       Boolean checkVul = exploit.checkVul(url, textArea_attInfo);
       if (checkVul) {
-        if (!getShell) {
+        if (!getshell) {
           textArea_attInfo.appendText("\n可以进行GetShell, 请选中getshell 单击ATT");
         }
-        if (getShell&&exploit.getshell(url, textArea_attInfo)) {
+        if (getshell) {
+          Boolean shell_success = exploit.getshell(url, textArea_attInfo);
+          if (shell_success) {
             textArea_attInfo.appendText("\n--Getshell 成功 若无特别说明则默认使用冰蝎4.0.3 aes--");
+          }
+
+
         }
       }
 

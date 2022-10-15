@@ -10,7 +10,7 @@ import utils.shell;
 public class weaveroa_KtreeUploadAction implements Exploitlnterface {
     @Override
     public Boolean checkVul(String url, TextArea textArea) {
-        return att(url,textArea);
+        return this.att(url,textArea);
     }
 
     @Override

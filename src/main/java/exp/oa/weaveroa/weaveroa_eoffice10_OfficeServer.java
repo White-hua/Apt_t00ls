@@ -2,6 +2,7 @@ package exp.oa.weaveroa;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -38,14 +39,16 @@ public class weaveroa_eoffice10_OfficeServer implements Exploitlnterface {
                     , "utf-8");
 
             if(response.getCode() == 200 && response.getText().contains(shell.test_payload)){
-                textArea.appendText("\n 测试文件写入 \n" + url + "/eoffice10/server/public/iWebOffice2015/Document/" +filename);
+                Platform.runLater(()->{ textArea.appendText("\n 测试文件写入 \n" + url + "/eoffice10/server/public/iWebOffice2015/Document/" +filename); });
+
                 return true;
             }else {
-                textArea.appendText("\n 若txt文件写入成功则为WAF拦截 请手动复现或修改shell");
+                Platform.runLater(()->{ textArea.appendText("\n 若txt文件写入成功则为WAF拦截 请手动复现或修改shell");});
+
                 return false;
             }
         }else {
-            textArea.appendText("\n e-office10 OfficeServer.php-RCE-漏洞不存在 (出现误报请联系作者)");
+            Platform.runLater(()->{ textArea.appendText("\n e-office10 OfficeServer.php-RCE-漏洞不存在 (出现误报请联系作者)"); });
             return false;
         }
     }

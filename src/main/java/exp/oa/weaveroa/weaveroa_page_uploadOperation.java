@@ -2,6 +2,7 @@ package exp.oa.weaveroa;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -21,11 +22,15 @@ public class weaveroa_page_uploadOperation implements Exploitlnterface {
     private Boolean att(String url,String path,TextArea textArea){
         Response response = HttpTools.get(url + "/page/exportImport/uploadOperation.jsp", new HashMap<String, String>(), "utf-8");
         if(response.getCode() == 200 && !response.getText().contains("error")){
-            textArea.appendText("\n 漏洞疑似存在！！请联系作者补充exp！！ weaveroa_page_uploadOperation");
+            Platform.runLater(()->{
+                textArea.appendText("\n 漏洞疑似存在！！请联系作者补充exp！！ weaveroa_page_uploadOperation");
+            });
             System.out.println(response.getText());
             return false;
         }else {
-            textArea.appendText("\n weaveroa_page_uploadOperation - 漏洞不存在 (出现误报请联系作者)");
+            Platform.runLater(()->{
+                textArea.appendText("\n weaveroa_page_uploadOperation - 漏洞不存在 (出现误报请联系作者)");
+            });
             return false;
         }
 

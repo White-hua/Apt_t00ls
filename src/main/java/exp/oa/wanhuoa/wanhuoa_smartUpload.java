@@ -4,6 +4,7 @@ import core.Exploitlnterface;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -54,18 +55,26 @@ public class wanhuoa_smartUpload implements Exploitlnterface {
                 }
                 Response response1 = HttpTools.get(url + "/defaultroot/upload/information/" + filename , new HashMap<String, String>(), "utf-8");
                 if(response1.getCode() == 200 && response1.getText().contains(shell.test_payload)){
-                    textArea.appendText("\n 漏洞存在 测试文件写入成功 \n " + url + "/defaultroot/upload/information/" + filename);
+                    Platform.runLater(()->{
+                      textArea.appendText("\n 漏洞存在 测试文件写入成功 \n " + url + "/defaultroot/upload/information/" + filename);
+                    });
                     return true;
                 }else {
-                    textArea.appendText("\n wanhuoa_smartUpload-RCE-漏洞不存在 (出现误报请联系作者)");
+                    Platform.runLater(()->{
+                      textArea.appendText("\n wanhuoa_smartUpload-RCE-漏洞不存在 (出现误报请联系作者)");
+                    });
                     return false;
                 }
             }else {
-                textArea.appendText("\n wanhuoa_smartUpload-RCE-漏洞不存在 (出现误报请联系作者)");
+               Platform.runLater(()->{
+                  textArea.appendText("\n wanhuoa_smartUpload-RCE-漏洞不存在 (出现误报请联系作者)");
+               });
                 return false;
             }
         }else {
-            textArea.appendText("\n wanhuoa_smartUpload-RCE-漏洞不存在 (出现误报请联系作者)");
+            Platform.runLater(()->{
+              textArea.appendText("\n wanhuoa_smartUpload-RCE-漏洞不存在 (出现误报请联系作者)");
+            });
             return false;
         }
     }

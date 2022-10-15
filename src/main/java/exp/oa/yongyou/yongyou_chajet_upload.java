@@ -2,6 +2,7 @@ package exp.oa.yongyou;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -33,14 +34,20 @@ public class yongyou_chajet_upload implements Exploitlnterface {
         if(post.getCode() == 200){
             Response response = HttpTools.get(url + "/tplus/SM/SetupAccount/images/" + filename, new HashMap<String, String>(), "utf-8");
             if(response.getText().contains(shell.test_payload)){
-                textArea.appendText("\n 漏洞存在，测试文件写入成功 \n地址为：" + url + "/tplus/SM/SetupAccount/images/" + filename);
+              Platform.runLater(()->{
+                  textArea.appendText("\n 漏洞存在，测试文件写入成功 \n地址为：" + url + "/tplus/SM/SetupAccount/images/" + filename);
+              });
                 return true;
             }else {
-                textArea.appendText("\n yongyou_chajet_upload - 漏洞不存在 (出现误报请联系作者)");
+               Platform.runLater(()->{
+                  textArea.appendText("\n yongyou_chajet_upload - 漏洞不存在 (出现误报请联系作者)");
+               });
                 return false;
             }
         }else {
-            textArea.appendText("\n yongyou_chajet_upload - 漏洞不存在 (出现误报请联系作者)");
+            Platform.runLater(()->{
+              textArea.appendText("\n yongyou_chajet_upload - 漏洞不存在 (出现误报请联系作者)");
+            });
             return false;
         }
     }

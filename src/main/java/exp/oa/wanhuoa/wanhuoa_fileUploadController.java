@@ -4,6 +4,7 @@ import core.Exploitlnterface;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -38,18 +39,25 @@ public class wanhuoa_fileUploadController implements Exploitlnterface {
             }
             Response response = HttpTools.get(url + "/defaultroot/upload/html/" + filename, new HashMap<String, String>(), "utf-8");
             if(response.getCode() == 200 && response.getText().contains(shell.test_payload)){
-                textArea.appendText("\n");
-                textArea.appendText("漏洞存在 测试文件写入成功\n " + url + "/defaultroot/upload/html/" + filename);
+
+                Platform.runLater(()->{
+                  textArea.appendText("\n");
+                  textArea.appendText("漏洞存在 测试文件写入成功\n " + url + "/defaultroot/upload/html/" + filename);
+                });
                 return true;
             }else {
-                textArea.appendText("\n");
-                textArea.appendText("wanhuoa_fileUploadController-RCE-漏洞不存在 (出现误报请联系作者)");
+                Platform.runLater(()->{
+                  textArea.appendText("\n");
+                  textArea.appendText("wanhuoa_fileUploadController-RCE-漏洞不存在 (出现误报请联系作者)");
+                });
                 return false;
             }
 
         }else {
-            textArea.appendText("\n");
-            textArea.appendText("wanhuoa_fileUploadController-RCE-漏洞不存在 (出现误报请联系作者)");
+            Platform.runLater(()->{
+              textArea.appendText("\n");
+              textArea.appendText("wanhuoa_fileUploadController-RCE-漏洞不存在 (出现误报请联系作者)");
+            });
             return false;
         }
     }

@@ -2,6 +2,7 @@ package exp.oa.wanhuoa;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -37,17 +38,23 @@ public class wanhuoa_Officeserverservlet implements Exploitlnterface {
 
             Response response1 = HttpTools.get(url + "/defaultroot/upload/html/nishizhu.txt", new HashMap<String, String>(), "utf-8");
             if (response1.getCode() == 200 && response1.getText().contains(shell.test_payload)) {
-                textArea.appendText("\n");
-                textArea.appendText("漏洞存在 测试文件已写入 \n " + url + "/defaultroot/upload/html/nishizhu.txt");
+                Platform.runLater(()->{
+                  textArea.appendText("\n");
+                  textArea.appendText("漏洞存在 测试文件已写入 \n " + url + "/defaultroot/upload/html/nishizhu.txt");
+                });
                 return true;
             } else {
-                textArea.appendText("\n");
-                textArea.appendText("wanhuoa_OfficeServerservlet-RCE-漏洞不存在 (出现误报请联系作者)");
+               Platform.runLater(()->{
+                  textArea.appendText("\n");
+                  textArea.appendText("wanhuoa_OfficeServerservlet-RCE-漏洞不存在 (出现误报请联系作者)");
+               });
                 return false;
             }
         } else {
-            textArea.appendText("\n");
-            textArea.appendText("wanhuoa_OfficeServerservlet-RCE-漏洞不存在 (出现误报请联系作者)");
+            Platform.runLater(()->{
+              textArea.appendText("\n");
+              textArea.appendText("wanhuoa_OfficeServerservlet-RCE-漏洞不存在 (出现误报请联系作者)");
+            });
             return false;
         }
     }

