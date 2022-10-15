@@ -148,6 +148,7 @@ public class HttpTools{
 
        try {
            conn.connect();
+           conn.setConnectTimeout(3000);
            response.setCode(conn.getResponseCode());
            response.setHead(conn.getHeaderFields().toString());
            response.setText(streamToString(conn.getInputStream(), encoding));

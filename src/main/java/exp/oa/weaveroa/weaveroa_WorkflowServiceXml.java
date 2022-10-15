@@ -2,6 +2,7 @@ package exp.oa.weaveroa;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -24,10 +25,11 @@ public class weaveroa_WorkflowServiceXml implements Exploitlnterface {
     private Boolean att(String url,TextArea textArea){
         Response response = HttpTools.get(url + "/services%20/WorkflowServiceXml", new HashMap<String, String>(), "utf-8");
         if(response.getCode() != 0 && response.getCode() != 404 && response.getText().contains("Invalid SOAP request")){
-            textArea.appendText("\n 存在XML实体注入 可进行getshell");
+          Platform.runLater(() -> textArea.appendText("\n 存在XML实体注入 可进行getshell"));
             return true;
         }else {
-            textArea.appendText("\n e-cology WorkflowServiceXml-RCE-漏洞不存在 (出现误报请联系作者)");
+            Platform.runLater(() -> textArea.appendText("\n e-cology WorkflowServiceXml-RCE-漏洞不存在 (出现误报请联系作者)"));
+
             return false;
         }
     }

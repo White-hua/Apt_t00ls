@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -49,16 +50,22 @@ public class yongyou_nc_FileReceiveServlet implements Exploitlnterface {
 
             Response get_res = HttpTools.get(url + "/nishizhu.txt", new HashMap<String, String>(), "utf-8");
             if(get_res.getCode() == 200 && get_res.getText().contains(shell.test_payload)){
-                textArea.appendText("\n 反序列化漏洞存在 txt文件写入成功 \n" + url + "/nishizhu.txt");
+               Platform.runLater(()->{
+                  textArea.appendText("\n 反序列化漏洞存在 txt文件写入成功 \n" + url + "/nishizhu.txt");
+               });
                 return true;
             }else {
-                textArea.appendText("\n nc_FileReceiveServlet-RCE-漏洞不存在 (出现误报请联系作者)");
+               Platform.runLater(()->{
+                  textArea.appendText("\n nc_FileReceiveServlet-RCE-漏洞不存在 (出现误报请联系作者)");
+               });
                 return false;
             }
 
         } catch (Exception e) {
-            textArea.appendText("\n nc_FileReceiveServlet-RCE-漏洞不存在 (出现误报请联系作者)");
-            textArea.appendText("\n 连接异常！！！");
+           Platform.runLater(()->{
+              textArea.appendText("\n nc_FileReceiveServlet-RCE-漏洞不存在 (出现误报请联系作者)");
+              textArea.appendText("\n 连接异常！！！");
+           });
         }
         return false;
     }
