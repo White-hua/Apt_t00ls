@@ -2,6 +2,7 @@ package exp.oa.landrayoa;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -26,10 +27,14 @@ public class landray_treexmlTmpl implements Exploitlnterface {
 
         Response post1 = HttpTools.post(url + "/data/sys-common/treexml.tmpl", post, head, "utf-8");
         if(post1.getCode() == 200 && post1.getText().contains("Landray.log")){
-            textArea.appendText("\n treexmlTmpl漏洞存在 请设置代理抓包 直接执行系统命令");
+           Platform.runLater(()->{
+              textArea.appendText("\n treexmlTmpl漏洞存在 请设置代理抓包 直接执行系统命令");
+           });
             return true;
         }else {
-            textArea.appendText("\n landray_treexmlTmpl-RCE-漏洞不存在 (出现误报请联系作者)");
+           Platform.runLater(()->{
+              textArea.appendText("\n landray_treexmlTmpl-RCE-漏洞不存在 (出现误报请联系作者)");
+           });
             return false;
         }
     }

