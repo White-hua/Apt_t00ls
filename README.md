@@ -29,6 +29,7 @@ yongyou_NC_FileReceiveServlet-RCE 反序列化rce (默认写入冰蝎4.0.3aes)
 yongyou_NC_bsh.servlet.BshServlet_RCE (可直接执行系统命令)  
 yongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)  
 yongyou_GRP_UploadFileData-RCE(默认写入冰蝎4.0.3aes)  
+yongyou_KSOA_imageUpload-RCE (默认写入冰蝎4.0.3aes)  
 
 万户：  
 wanhuoa_OfficeServer-RCE(默认写入冰蝎4.0.3aes)    
@@ -43,12 +44,17 @@ seeyonoa_wpsAssistServlet-RCE(默认写入冰蝎4.0.3aes)
 seeyonoa_htmlofficeservlet-RCE(默认写入冰蝎4.0.3aes)  
 seeyonoa_ajaxBypass-RCE(写入天蝎 密码sky)  
   
+通达:  
+tongdaoa_getdata-RCE (直接执行系统命令)  
+tongdaoa_apiali-RCE (默认写入冰蝎4.0.3aes)  
+  
 中间件:  
 IIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)  
 
 安全设备:  
 综合安防_applyCT_fastjson-RCE(仅支持检测,自行使用ladp服务利用)  
 网康下一代防火墙_ngfw_waf_route-RCE(写入菜刀shell 密码:nishizhu)  
+网御星云账号密码泄露  
   
 使用截图：  
 ![QQ截图20221014202028](https://user-images.githubusercontent.com/100954709/195846430-84bfff61-2c7b-4027-abcc-76d5910b76e4.png)  
