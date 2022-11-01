@@ -25,7 +25,6 @@ public class weaveroa_page_uploadOperation implements Exploitlnterface {
             Platform.runLater(()->{
                 textArea.appendText("\n 漏洞疑似存在！！请联系作者补充exp！！ weaveroa_page_uploadOperation");
             });
-            System.out.println(response.getText());
             return false;
         }else {
             Platform.runLater(()->{

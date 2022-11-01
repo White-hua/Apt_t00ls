@@ -15,7 +15,9 @@ public class weaveroa_BshServlet implements Exploitlnterface {
 
     @Override
     public Boolean getshell(String url, TextArea textArea) {
+        Platform.runLater(()->{
         textArea.appendText("\n 该漏洞已直接执行系统命令，无需getshell");
+        });
         return false;
     }
 

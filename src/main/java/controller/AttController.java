@@ -204,7 +204,16 @@ public class AttController {
             if (Objects.isNull(textArea_attInfo)) {
               System.out.println("NPE debugger");
             }
-            exploit.checkVul(url, textArea_attInfo);
+
+            Boolean aBoolean = exploit.checkVul(url, textArea_attInfo);
+            if(aBoolean){
+              Platform.runLater(() -> {
+                textArea_attInfo.appendText("\n");
+                textArea_attInfo.appendText("--------------------------------");
+                textArea_attInfo.appendText("\n");
+              });
+            }
+
           } catch (Exception e) {
             if (e instanceof IndexOutOfBoundsException) {
               System.out.println("数组下标越界异常");
@@ -217,11 +226,7 @@ public class AttController {
             String threadName = "线程：" + Thread.currentThread().getName();
             // String x = threadName + "结束";
             System.out.println(threadName+" spend:" + (System.currentTimeMillis() - start) + "ms");
-            // Platform.runLater(() -> {
-            //   textArea_attInfo.appendText("\n");
-            //   textArea_attInfo.appendText(x);
-            //   textArea_attInfo.appendText("\n");
-            // });
+
             countDownLatch.countDown();
           }
         });
@@ -232,7 +237,7 @@ public class AttController {
         System.out.println("total spend:" + (System.currentTimeMillis() - start) + "ms");
         Platform.runLater(() -> {
           textArea_attInfo.appendText(
-              "\n\n如需获取shell请勾选 getshell并选择具体漏洞" + " " + DateUtil.now());
+              "\n\n如需获取shell请勾选 getshell并选择具体漏洞 " + DateUtil.now());
         });
       } catch (Exception e) {
         e.printStackTrace();
@@ -287,6 +292,10 @@ public class AttController {
     textArea_info.appendText("\nwanhu_smartUpload-RCE (可直接执行系统命令)");
     textArea_info.appendText("\nwanhuoa_OfficeServerservlet-RCE(默认写入冰蝎4.0.3aes)");
     textArea_info.appendText("\nwanhu_DocumentEdit-SQlli (mssql数据库 可 os-shell)");
+    textArea_info.appendText("\nwanhuoa_fileUploadController-RCE (默认写入冰蝎4.0.3aes)");
+
+    textArea_info.appendText("\ntongdaoa_getdata-RCE (直接执行系统命令)");
+    textArea_info.appendText("\ntongdaoa_apiali-RCE (默认写入冰蝎4.0.3aes)");
 
     textArea_info.appendText(
         "\n\nyongyou_chajet-RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)");
@@ -295,6 +304,7 @@ public class AttController {
         "\nyongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)");
     textArea_info.appendText("\nyongyou_NC_FileReceiveServlet-RCE (默认写入冰蝎4.0.3aes)");
     textArea_info.appendText("\nyongyou_GRP_UploadFileData-RCE (默认写入冰蝎4.0.3aes)");
+    textArea_info.appendText("\nyongyou_KSOA_imageUpload-RCE (默认写入冰蝎4.0.3aes)");
 
     textArea_info.appendText("\n\nseeyonoa_main_log4j2-RCE (仅支持检测)");
     textArea_info.appendText("\nseeyonoa_wpsAssistServlet-RCE (默认写入冰蝎4.0.3aes)");
@@ -306,6 +316,7 @@ public class AttController {
 
     textArea_info.appendText("\n\n综合安防_applyCT_fastjson-RCE(仅支持检测,自行使用ladp服务利用)");
     textArea_info.appendText("\n网康下一代防火墙_ngfw_waf_route-RCE(写入菜刀shell 密码:nishizhu)");
+    textArea_info.appendText("\n网御星云-上网行为管理账号密码泄露_Leadsec_ACM");
 
     textArea_info.appendText(
         "\n\n-------------------------------(禁止未授权恶意攻击)-----------------------------");
@@ -385,6 +396,9 @@ public class AttController {
       case "致远-OA":
         choiceBox_exp.setItems(exp.zhiyuanoa());
         break;
+      case "通达-OA":
+        choiceBox_exp.setItems(exp.tongdaoa());
+        break;
       case "IIS":
         choiceBox_exp.setItems(exp.iis());
         break;
@@ -394,7 +408,11 @@ public class AttController {
       case "奇安信":
         choiceBox_exp.setItems(exp.qianxin());
         break;
+      case "网御星云":
+        choiceBox_exp.setItems(exp.wangyu());
+        break;
       default:
+        System.out.println(selectedItem);
         // 当所选项还没有exp给默认选项
         choiceBox_exp.setItems(exp.defaultList());
     }

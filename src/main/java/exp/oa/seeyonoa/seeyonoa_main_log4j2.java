@@ -18,7 +18,9 @@ public class seeyonoa_main_log4j2 implements Exploitlnterface {
 
     @Override
     public Boolean getshell(String url, TextArea textArea) {
+        Platform.runLater(()->{
         textArea.appendText("\n log4j2无法getshell  请自行开启ladp服务利用");
+        });
         return false;
     }
 
@@ -40,7 +42,7 @@ public class seeyonoa_main_log4j2 implements Exploitlnterface {
             // throw new RuntimeException("当前那EXP返回 null");
             Platform.runLater(()->{
                 textArea.appendText("\n");
-              textArea.appendText("seeyonoa_main_log4j2-RCE 当前那EXP返回 null");
+                textArea.appendText("seeyonoa_main_log4j2-RCE 当前那EXP返回 null");
             });
             return false;
         }

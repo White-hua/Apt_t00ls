@@ -3,6 +3,7 @@ package utils;
 import core.Exploitlnterface;
 import exp.equipment.hikvision.hik_applyCT_fastjson;
 import exp.equipment.qianxin.ngfw_waf_router;
+import exp.equipment.wangyu.Leadsec_ACM_account;
 import exp.middleware.iis.iis_put_rce;
 import exp.oa.landrayoa.landray_datajson;
 import exp.oa.landrayoa.landray_sysSearchMain;
@@ -11,6 +12,8 @@ import exp.oa.seeyonoa.seeyonoa_ajaxBypass;
 import exp.oa.seeyonoa.seeyonoa_htmlofficeservlet;
 import exp.oa.seeyonoa.seeyonoa_main_log4j2;
 import exp.oa.seeyonoa.seeyonoa_wpsAssistServlet;
+import exp.oa.tongdaoa.tongdaoa_apiali;
+import exp.oa.tongdaoa.tongdaoa_getdata;
 import exp.oa.wanhuoa.wanhu_DocumentEdit;
 import exp.oa.wanhuoa.wanhuoa_OfficeServer;
 import exp.oa.wanhuoa.wanhuoa_Officeserverservlet;
@@ -25,11 +28,8 @@ import exp.oa.weaveroa.weaveroa_mobile6_sqlli;
 import exp.oa.weaveroa.weaveroa_office_UploadFile;
 import exp.oa.weaveroa.weaveroa_page_uploadOperation;
 import exp.oa.weaveroa.weaveroa_workrelate_uploadOperation;
-import exp.oa.yongyou.yongyou_chajet_upload;
-import exp.oa.yongyou.yongyou_grp_UploadFileData;
-import exp.oa.yongyou.yongyou_nc_BshServlet;
-import exp.oa.yongyou.yongyou_nc_FileReceiveServlet;
-import exp.oa.yongyou.yongyou_nc_NCFindWeb;
+import exp.oa.yongyou.*;
+
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -81,6 +81,7 @@ public class Kinds_Exp {
     oa.add("用友-OA");
     oa.add("万户-OA");
     oa.add("致远-OA");
+    oa.add("通达-OA");
     return FXCollections.observableArrayList(oa);
   }
 
@@ -96,6 +97,7 @@ public class Kinds_Exp {
     ArrayList<String> equipment = new ArrayList<>();
     equipment.add("海康");
     equipment.add("深信服");
+    equipment.add("网御星云");
     equipment.add("奇安信");
     return FXCollections.observableArrayList(equipment);
   }
@@ -137,6 +139,7 @@ public class Kinds_Exp {
     expList.add("NC_NCFindWeb-Directory");
     expList.add("NC_FileReceiveServlet-RCE");
     expList.add("GRP_U8_UploadFileData-RCE");
+    expList.add("KSOA_ImageUpload-RCE");
     return FXCollections.observableArrayList(expList);
   }
 
@@ -163,6 +166,15 @@ public class Kinds_Exp {
     return FXCollections.observableArrayList(expList);
   }
 
+  //通达oa
+  public ObservableList<String> tongdaoa() {
+    expList = new ArrayList<>();
+    expList.add("All");
+    expList.add("tongdaoa_getdata-RCE");
+    expList.add("tongdaoa_apiali-RCE");
+    return FXCollections.observableArrayList(expList);
+  }
+
   /*---------------------中间件系列-------------------------*/
 
   //IIS
@@ -184,10 +196,18 @@ public class Kinds_Exp {
     return FXCollections.observableArrayList(expList);
   }
 
+  //奇安信
   public ObservableList<String> qianxin() {
     expList = new ArrayList<>();
     expList.add("All");
     expList.add("网康防火墙_NGFW_waf_router-RCE");
+    return FXCollections.observableArrayList(expList);
+  }
+
+  public ObservableList<String> wangyu() {
+    expList = new ArrayList<>();
+    expList.add("All");
+    expList.add("上网行为管理账号密码泄露_Leadsec_ACM");
     return FXCollections.observableArrayList(expList);
   }
 
@@ -234,6 +254,8 @@ public class Kinds_Exp {
       ei = new yongyou_nc_FileReceiveServlet();
     }else if(vulName.contains("GRP_U8_UploadFileData-RCE")){
       ei = new yongyou_grp_UploadFileData();
+    }else if(vulName.contains("KSOA_ImageUpload-RCE")){
+      ei = new yongyou_KSOA_imageupload();
     }
 
     else if (vulName.contains("landray_sysSearchMain.do-RCE")) {
@@ -269,6 +291,12 @@ public class Kinds_Exp {
       ei = new seeyonoa_ajaxBypass();
     }
 
+    else if(vulName.contains("tongdaoa_getdata-RCE")){
+      //通达oa
+      ei = new tongdaoa_getdata();
+    }else if(vulName.contains("tongdaoa_apiali-RCE")){
+      ei = new tongdaoa_apiali();
+    }
 
     /*-----中间件-----*/
     else if (vulName.contains("iis_put_rce")) {
@@ -284,7 +312,10 @@ public class Kinds_Exp {
       //奇安信网康
       ei = new ngfw_waf_router();
     }
-
+    else if(vulName.contains("上网行为管理账号密码泄露_Leadsec_ACM")){
+      //网御星云
+      ei = new Leadsec_ACM_account();
+    }
     return ei;
   }
 }
