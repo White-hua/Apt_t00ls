@@ -209,7 +209,7 @@ public class AttController {
             if(aBoolean){
               Platform.runLater(() -> {
                 textArea_attInfo.appendText("\n");
-                textArea_attInfo.appendText("--------------------------------");
+                textArea_attInfo.appendText("-------------------" + val + "漏洞存在----------");
                 textArea_attInfo.appendText("\n");
               });
             }

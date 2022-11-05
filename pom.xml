@@ -22,11 +22,11 @@
       <version>5.8.8</version>
     </dependency>
 <!--     https://mvnrepository.com/artifact/com.jfoenix/jfoenix-->
-    <dependency>
-      <groupId>com.jfoenix</groupId>
-      <artifactId>jfoenix</artifactId>
-      <version>9.0.10</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.jfoenix</groupId>-->
+<!--      <artifactId>jfoenix</artifactId>-->
+<!--      <version>9.0.10</version>-->
+<!--    </dependency>-->
 <!--    <dependency>-->
 <!--      <groupId>org.yaml</groupId>-->
 <!--      <artifactId>snakeyaml</artifactId>-->
