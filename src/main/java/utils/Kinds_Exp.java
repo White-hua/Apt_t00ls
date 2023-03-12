@@ -1,17 +1,18 @@
 package utils;
 
 import core.Exploitlnterface;
+import exp.cms.nacos_Creatuser;
+import exp.equipment.h3c.cas_cvm_upload;
 import exp.equipment.hikvision.hik_applyCT_fastjson;
 import exp.equipment.qianxin.ngfw_waf_router;
 import exp.equipment.wangyu.Leadsec_ACM_account;
 import exp.middleware.iis.iis_put_rce;
+import exp.oa.fanruan.fanruan_save_svg;
 import exp.oa.landrayoa.landray_datajson;
+import exp.oa.landrayoa.landray_fileupload_sysSearch;
 import exp.oa.landrayoa.landray_sysSearchMain;
 import exp.oa.landrayoa.landray_treexmlTmpl;
-import exp.oa.seeyonoa.seeyonoa_ajaxBypass;
-import exp.oa.seeyonoa.seeyonoa_htmlofficeservlet;
-import exp.oa.seeyonoa.seeyonoa_main_log4j2;
-import exp.oa.seeyonoa.seeyonoa_wpsAssistServlet;
+import exp.oa.seeyonoa.*;
 import exp.oa.tongdaoa.tongdaoa_apiali;
 import exp.oa.tongdaoa.tongdaoa_getdata;
 import exp.oa.wanhuoa.wanhu_DocumentEdit;
@@ -19,15 +20,7 @@ import exp.oa.wanhuoa.wanhuoa_OfficeServer;
 import exp.oa.wanhuoa.wanhuoa_Officeserverservlet;
 import exp.oa.wanhuoa.wanhuoa_fileUploadController;
 import exp.oa.wanhuoa.wanhuoa_smartUpload;
-import exp.oa.weaveroa.weaveroa_BshServlet;
-import exp.oa.weaveroa.weaveroa_KtreeUploadAction;
-import exp.oa.weaveroa.weaveroa_WorkflowServiceXml;
-import exp.oa.weaveroa.weaveroa_doExecl;
-import exp.oa.weaveroa.weaveroa_eoffice10_OfficeServer;
-import exp.oa.weaveroa.weaveroa_mobile6_sqlli;
-import exp.oa.weaveroa.weaveroa_office_UploadFile;
-import exp.oa.weaveroa.weaveroa_page_uploadOperation;
-import exp.oa.weaveroa.weaveroa_workrelate_uploadOperation;
+import exp.oa.weaveroa.*;
 import exp.oa.yongyou.*;
 
 import java.util.ArrayList;
@@ -70,6 +63,7 @@ public class Kinds_Exp {
     kindList.add("OA");
     kindList.add("安全设备");
     kindList.add("中间件");
+    kindList.add("CMS");
     return kindList;
   }
 
@@ -82,6 +76,7 @@ public class Kinds_Exp {
     oa.add("万户-OA");
     oa.add("致远-OA");
     oa.add("通达-OA");
+    oa.add("帆软-OA");
     return FXCollections.observableArrayList(oa);
   }
 
@@ -96,9 +91,16 @@ public class Kinds_Exp {
   public static ObservableList<String> equipment() {
     ArrayList<String> equipment = new ArrayList<>();
     equipment.add("海康");
+    equipment.add("H3C");
     equipment.add("深信服");
     equipment.add("网御星云");
     equipment.add("奇安信");
+    return FXCollections.observableArrayList(equipment);
+  }
+
+  public static ObservableList<String> cms() {
+    ArrayList<String> equipment = new ArrayList<>();
+    equipment.add("Alibaba");
     return FXCollections.observableArrayList(equipment);
   }
 
@@ -114,6 +116,7 @@ public class Kinds_Exp {
     expList.add("e-cology BshServlet-RCE");
     expList.add("e-cology KreeUploadAction-RCE");
     expList.add("e-office logo_UploadFile.php-RCE");
+    expList.add("e-office8 upload.php-RCE");
     expList.add("e-office10 OfficeServer.php-RCE");
     expList.add("e-office doexcel.php-RCE");
     expList.add("e-mobile_6.6 messageType.do-SQlli");
@@ -127,6 +130,14 @@ public class Kinds_Exp {
     expList.add("landray_sysSearchMain.do-RCE");
     expList.add("landray_treexmlTmpl-RCE");
     expList.add("landray_datajson-RCE");
+    expList.add("landray_fileupload_sysSearch-RCE");
+    return FXCollections.observableArrayList(expList);
+  }
+
+  public ObservableList<String> fanruan(){
+    expList = new ArrayList<>();
+    expList.add("All");
+    expList.add("fanruan-design_save_svg-RCE");
     return FXCollections.observableArrayList(expList);
   }
 
@@ -138,8 +149,11 @@ public class Kinds_Exp {
     expList.add("NC_bsh.servlet.BshServlet-RCE");
     expList.add("NC_NCFindWeb-Directory");
     expList.add("NC_FileReceiveServlet-RCE");
+    expList.add("NC_UploadServlet-RCE");
     expList.add("GRP_U8_UploadFileData-RCE");
+    expList.add("GRP_U8_AppProxy-RCE");
     expList.add("KSOA_ImageUpload-RCE");
+    expList.add("KSOA_Attachmentupload-RCE");
     return FXCollections.observableArrayList(expList);
   }
 
@@ -160,9 +174,11 @@ public class Kinds_Exp {
     expList = new ArrayList<>();
     expList.add("All");
     expList.add("seeyonoa_main_log4j2-RCE");
+    expList.add("seeyonoa_seeyonreport_upload-RCE");
     expList.add("seeyonoa_wpsAssisServlet-RCE");
     expList.add("seeyonoa_htmlofficeservlet-RCE");
     expList.add("seeyonoa_ajaxBypass-RCE");
+    expList.add("seeyon_testsqli-RCE");
     return FXCollections.observableArrayList(expList);
   }
 
@@ -196,6 +212,13 @@ public class Kinds_Exp {
     return FXCollections.observableArrayList(expList);
   }
 
+  public ObservableList<String> h3c() {
+    expList = new ArrayList<>();
+    expList.add("All");
+    expList.add("cas_cvm云计算管理平台-RCE");
+    return FXCollections.observableArrayList(expList);
+  }
+
   //奇安信
   public ObservableList<String> qianxin() {
     expList = new ArrayList<>();
@@ -208,6 +231,15 @@ public class Kinds_Exp {
     expList = new ArrayList<>();
     expList.add("All");
     expList.add("上网行为管理账号密码泄露_Leadsec_ACM");
+    return FXCollections.observableArrayList(expList);
+  }
+
+  /*---------------------CMS-------------------------*/
+
+  public ObservableList<String> Alibaba() {
+    expList = new ArrayList<>();
+    expList.add("All");
+    expList.add("nacos任意用户添加");
     return FXCollections.observableArrayList(expList);
   }
 
@@ -242,6 +274,15 @@ public class Kinds_Exp {
     }else if(vulName.contains("e-office doexcel.php-RCE")){
       ei = new weaveroa_doExecl();
     }
+    else if(vulName.contains("e-office8 upload.php-RCE")){
+      ei = new weaveroa_eoffice8_upload();
+    }
+
+
+    else if (vulName.contains("fanruan-design_save_svg-RCE")) {
+      //帆软
+      ei = new fanruan_save_svg();
+    }
 
     else if (vulName.contains("chajet_upload-RCE")) {
       //用友
@@ -256,15 +297,22 @@ public class Kinds_Exp {
       ei = new yongyou_grp_UploadFileData();
     }else if(vulName.contains("KSOA_ImageUpload-RCE")){
       ei = new yongyou_KSOA_imageupload();
-    }
+    }else if(vulName.contains("NC_UploadServlet-RCE")){
+      ei = new yongyou_nc_uploadServlet();
+    } else if (vulName.contains("GRP_U8_AppProxy-RCE")) {
+      ei = new yongyou_U8_AppProxy();
+    } else if (vulName.contains("KSOA_Attachmentupload-RCE")) {
+      ei = new yongyou_KSOA_Attachmentupload();
 
-    else if (vulName.contains("landray_sysSearchMain.do-RCE")) {
+    } else if (vulName.contains("landray_sysSearchMain.do-RCE")) {
       //蓝凌
       ei = new landray_sysSearchMain();
     } else if (vulName.contains("landray_treexmlTmpl-RCE")) {
       ei = new landray_treexmlTmpl();
     } else if (vulName.contains("landray_datajson-RCE")) {
       ei = new landray_datajson();
+    } else if (vulName.contains("landray_fileupload_sysSearch-RCE")) {
+      ei = new landray_fileupload_sysSearch();
     }
 
     else if(vulName.contains("wanhu_OfficeServer-RCE")){
@@ -289,6 +337,10 @@ public class Kinds_Exp {
       ei = new seeyonoa_htmlofficeservlet();
     }else if(vulName.contains("seeyonoa_ajaxBypass-RCE")){
       ei = new seeyonoa_ajaxBypass();
+    }else if(vulName.contains("seeyonoa_seeyonreport_upload-RCE")){
+      ei = new seeyonreport_svg_upload();
+    }else if (vulName.contains("seeyon_testsqli-RCE")) {
+      ei = new seeyon_testsqli();
     }
 
     else if(vulName.contains("tongdaoa_getdata-RCE")){
@@ -315,7 +367,16 @@ public class Kinds_Exp {
     else if(vulName.contains("上网行为管理账号密码泄露_Leadsec_ACM")){
       //网御星云
       ei = new Leadsec_ACM_account();
+    } else if (vulName.contains("cas_cvm云计算管理平台-RCE")) {
+      //h3c
+      ei = new cas_cvm_upload();
     }
+
+    /*-----CMS-----*/
+    else if (vulName.contains("nacos任意用户添加")) {
+      ei = new nacos_Creatuser();
+    }
+
     return ei;
   }
 }

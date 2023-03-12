@@ -42,6 +42,11 @@ public class shell {
 //     public static String dnspath = "./Apt_config/dnslog/dnslog.txt";
 
 
+
+//    public static final String open = "notepad ";
+    public static final String open = "open ";
+
+
     //标记内容
     public static final String test_payload = "9df37afc77bdd582d90aefaf4e35c63e";
 
@@ -179,4 +184,26 @@ public class shell {
         }
         return sb.toString();
     }
+
+
+
+    /*-------------------------------url编码方法---------------------------*/
+
+    public static String gbEncoding(String gbString) {
+        char[] utfBytes = gbString.toCharArray();
+        String unicodeBytes = "";
+
+        for(int i = 0; i < utfBytes.length; ++i) {
+            String hexB = Integer.toHexString(utfBytes[i]);
+            if (hexB.length() <= 2) {
+                hexB = "00" + hexB;
+            }
+
+            unicodeBytes = unicodeBytes + "\\u" + hexB;
+        }
+
+        return unicodeBytes;
+    }
+
+
 }

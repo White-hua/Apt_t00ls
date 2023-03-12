@@ -34,7 +34,7 @@ public class TsklistController {
         String finallist = shell.ifexe(resultlist22, exelist);
         String res;
         try {
-            res = new String(finallist.getBytes("gbk"));
+            res = new String(finallist.getBytes("utf-8"));
             textArea_res.setText(res);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

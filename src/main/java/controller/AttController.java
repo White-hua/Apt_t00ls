@@ -82,7 +82,7 @@ public class AttController {
     Runtime run = Runtime.getRuntime();
     //path:文件路径
     try {
-      run.exec("notepad " + shell.Jsppath);
+      run.exec(shell.open + shell.Jsppath);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -93,7 +93,7 @@ public class AttController {
     Runtime run = Runtime.getRuntime();
     //path:文件路径
     try {
-      run.exec("notepad " + shell.Jspxpath);
+      run.exec(shell.open + shell.Jspxpath);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -104,7 +104,7 @@ public class AttController {
     Runtime run = Runtime.getRuntime();
     //path:文件路径
     try {
-      run.exec("notepad " + shell.Asppath);
+      run.exec(shell.open + shell.Asppath);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -115,7 +115,7 @@ public class AttController {
     Runtime run = Runtime.getRuntime();
     //path:文件路径
     try {
-      run.exec("notepad " + shell.Aspxpath);
+      run.exec(shell.open + shell.Aspxpath);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -126,7 +126,7 @@ public class AttController {
     Runtime run = Runtime.getRuntime();
     //path:文件路径
     try {
-      run.exec("notepad " + shell.Phppath);
+      run.exec(shell.open + shell.Phppath);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -137,7 +137,7 @@ public class AttController {
     Runtime run = Runtime.getRuntime();
     //path:文件路径
     try {
-      run.exec("notepad " + shell.dnspath);
+      run.exec(shell.open + shell.dnspath);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -148,7 +148,7 @@ public class AttController {
     Runtime run = Runtime.getRuntime();
     //path:文件路径
     try {
-      run.exec("notepad " + shell.dnscofpath);
+      run.exec(shell.open + shell.dnscofpath);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -270,60 +270,26 @@ public class AttController {
   @FXML
   public void initialize() {
 
-    textArea_info.setText(
-        "------------------------------------目前EXP如下--------------------------------");
-    textArea_info.appendText(
-        "\ne-cology workrelate_uploadOperation.jsp-RCE (默认写入冰蝎4.0.3aes)");
-    textArea_info.appendText("\ne-cology page_uploadOperation.jsp-RCE (暂未找到案例 仅供检测poc)");
-    textArea_info.appendText("\ne-cology WorkflowServiceXml-RCE (默认写入内存马 冰蝎 3.0 beta11)");
-    textArea_info.appendText("\ne-cology BshServlet-RCE (可直接执行系统命令)");
-    textArea_info.appendText("\ne-cology KtreeUploadAction-RCE (默认写入冰蝎4.0.3aes)");
-    textArea_info.appendText("\ne-office logo_UploadFile.php-RCE (默认写入冰蝎4.0.3aes)");
-    textArea_info.appendText("\ne-office doexecl.php-RCE (写入phpinfo,需要getshell请自行利用)");
-    textArea_info.appendText("\ne-office10 OfficeServer.php-RCE (默认写入冰蝎4.0.3aes)");
-    textArea_info.appendText("\ne-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)");
 
     textArea_info.appendText(
-        "\n\nlandray_sysSearchMain-RCE (多个payload，写入哥斯拉 3.03 密码 yes)");
-    textArea_info.appendText("\nlandray_treexmlTmpl-RCE (可直接执行系统命令)");
-    textArea_info.appendText("\nlandray_datajson-RCE (可直接执行系统命令)");
-
-    textArea_info.appendText("\n\nwanhu_OfficeServer-RCE (可直接执行系统命令)");
-    textArea_info.appendText("\nwanhu_smartUpload-RCE (可直接执行系统命令)");
-    textArea_info.appendText("\nwanhuoa_OfficeServerservlet-RCE(默认写入冰蝎4.0.3aes)");
-    textArea_info.appendText("\nwanhu_DocumentEdit-SQlli (mssql数据库 可 os-shell)");
-    textArea_info.appendText("\nwanhuoa_fileUploadController-RCE (默认写入冰蝎4.0.3aes)");
-
-    textArea_info.appendText("\ntongdaoa_getdata-RCE (直接执行系统命令)");
-    textArea_info.appendText("\ntongdaoa_apiali-RCE (默认写入冰蝎4.0.3aes)");
+        "\n---------------------------(禁止未授权恶意攻击)-------------------------");
 
     textArea_info.appendText(
-        "\n\nyongyou_chajet-RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)");
-    textArea_info.appendText("\nyongyou_NC_bsh.servlet.BshServlet-RCE (可直接执行系统命令)");
-    textArea_info.appendText(
-        "\nyongyou_NC_NCFindWeb 目录遍历漏洞 (可查看是否存在历史遗留webshell)");
-    textArea_info.appendText("\nyongyou_NC_FileReceiveServlet-RCE (默认写入冰蝎4.0.3aes)");
-    textArea_info.appendText("\nyongyou_GRP_UploadFileData-RCE (默认写入冰蝎4.0.3aes)");
-    textArea_info.appendText("\nyongyou_KSOA_imageUpload-RCE (默认写入冰蝎4.0.3aes)");
-
-    textArea_info.appendText("\n\nseeyonoa_main_log4j2-RCE (仅支持检测)");
-    textArea_info.appendText("\nseeyonoa_wpsAssistServlet-RCE (默认写入冰蝎4.0.3aes)");
-    textArea_info.appendText("\nseeyonoa_htmlofficeservlet-RCE (默认写入冰蝎4.0.3aes)");
-    textArea_info.appendText("\nseeyonoa_ajaxBypass-RCE (写入天蝎 密码sky)");
+            "\n\n 本工具仅供学习研究及合法授权下渗透测试！！！！！\n");
 
     textArea_info.appendText(
-        "\n\nIIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)");
-
-    textArea_info.appendText("\n\n综合安防_applyCT_fastjson-RCE(仅支持检测,自行使用ladp服务利用)");
-    textArea_info.appendText("\n网康下一代防火墙_ngfw_waf_route-RCE(写入菜刀shell 密码:nishizhu)");
-    textArea_info.appendText("\n网御星云-上网行为管理账号密码泄露_Leadsec_ACM");
+            "\n 本工具webshell写入判断依据为md5 在修改shll内容时请勿删除md5");
+    textArea_info.appendText(
+            "\n config目录中shell开头文件均为 冰蝎4.0.3 aes生成webshell");
+    textArea_info.appendText(
+            "\n gsl.jsp为哥斯拉4.01 jsp aes 默认密码密钥 ");
+    textArea_info.appendText(
+            "\n chajet目录下为畅捷通编译好shell文件");
+    textArea_info.appendText(
+            "\n dnslog文件夹下为部分漏洞所需dnslog回显测试所用，请自行修改dnslog文件");
 
     textArea_info.appendText(
-        "\n\n-------------------------------(禁止未授权恶意攻击)-----------------------------");
-
-    textArea_info.appendText("\n\n---------小提醒，工具所用shell为冰蝎默认aes加密生成shell"
-        + "\n 若工具提示shell写入成功 但访问不存在或连接不上 请考虑免杀，修改shell位置在工具目录下Apt_config"
-        + "\n 工具判断shell是否写入依据md5 可自行打开查看 修改shell请保留md5 否则会影响漏洞判断");
+            "\n\n---------------------------(禁止未授权恶意攻击)-------------------------");
 
     //设置自动换行
     textArea_info.setWrapText(true);
@@ -360,6 +326,9 @@ public class AttController {
         break;
       case "安全设备":
         listview_kinds.setItems(Kinds_Exp.equipment());
+        break;
+      case "CMS":
+        listview_kinds.setItems(Kinds_Exp.cms());
         break;
     }
     updateListView(listview_kinds.getItems().get(0));
@@ -399,11 +368,21 @@ public class AttController {
       case "通达-OA":
         choiceBox_exp.setItems(exp.tongdaoa());
         break;
+      case "帆软-OA":
+        choiceBox_exp.setItems(exp.fanruan());
+        break;
+
       case "IIS":
         choiceBox_exp.setItems(exp.iis());
         break;
+
+
+
       case "海康":
         choiceBox_exp.setItems(exp.hik());
+        break;
+      case "H3C":
+        choiceBox_exp.setItems(exp.h3c());
         break;
       case "奇安信":
         choiceBox_exp.setItems(exp.qianxin());
@@ -411,6 +390,15 @@ public class AttController {
       case "网御星云":
         choiceBox_exp.setItems(exp.wangyu());
         break;
+
+
+
+      case "Alibaba":
+        choiceBox_exp.setItems(exp.Alibaba());
+        break;
+
+
+
       default:
         System.out.println(selectedItem);
         // 当所选项还没有exp给默认选项
