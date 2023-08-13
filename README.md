@@ -26,7 +26,7 @@
 </table></div>
 
 ---
-  
+
 泛微:  
 e-cology workrelate_uploadOperation.jsp-RCE (默认写入冰蝎4.0.3aes)  
 e-cology page_uploadOperation.jsp-RCE (暂未找到案例 仅供检测poc)  
@@ -37,7 +37,7 @@ e-office logo_UploadFile.php-RCE (默认写入冰蝎4.0.3aes)
 e-office10 OfficeServer.php-RCE (默认写入冰蝎4.0.3aes)  
 e-office8 fileupload-RCE (默认写入冰蝎4.0.3aes)  
 e-office doexecl.php-RCE (写入phpinfo,需要getshell请自行利用)  
-e-mobile_6.0 sqlli-RCE (可直接执行系统命令)
+e-mobile_6.0 sqlli-RCE (可直接执行系统命令)  
 e-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)
 
 蓝凌：  
@@ -75,10 +75,10 @@ seeyon_testsqli-RCE(仅检测是否存在漏洞页面)
 
 通达:  
 tongdaoa_getdata-RCE (直接执行系统命令)  
-tongdaoa_apiali-RCE (默认写入冰蝎4.0.3aes)  
+tongdaoa_apiali-RCE (默认写入冰蝎4.0.3aes)
 
 帆软：
-fanruan_save_svg-RCE (默认写入冰蝎4.0.3aes)  
+fanruan_save_svg-RCE (默认写入冰蝎4.0.3aes)
 
 中间件:  
 IIS_PUT_RCE (emm暂时没办法getshell  仅支持检测 java没有MOVE方法)
@@ -92,7 +92,7 @@ H3C cas_cvm_upload-RCE  (默认写入冰蝎4.0.3aes)
 大华智慧园区任意文件上传  (默认写入冰蝎4.0.3aes)  
 深信服应用交付管理系统命令执行  
 网御星云账号密码泄露
-阿里nacos未授权任意用户添加  
+阿里nacos未授权任意用户添加
 
 使用截图：  
 ![QQ截图20221014202028](https://user-images.githubusercontent.com/100954709/195846430-84bfff61-2c7b-4027-abcc-76d5910b76e4.png)  
@@ -124,7 +124,7 @@ Tasklist敏感进程检测
 可直接提Issu  
 或加我wx进群交流，微信请备注apt
 
-![my](https://user-images.githubusercontent.com/100954709/193801691-df73fec6-284a-450a-943a-09fe023bcde0.png)  
+![my](https://user-images.githubusercontent.com/100954709/193801691-df73fec6-284a-450a-943a-09fe023bcde0.png)
 
 
 ---
