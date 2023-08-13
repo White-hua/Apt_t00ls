@@ -43,12 +43,12 @@ e-mobile_6.6 messageType.do-SQlli (sqlmap利用，暂无直接shell的exp)
 蓝凌：  
 landray_datajson-RCE (可直接执行系统命令)  
 landray_treexmlTmpl-RCE (可直接执行系统命令)  
-landray_sysSearchMain-RCE (多个payload，写入哥斯拉 3.03 密码 yes)
+landray_sysSearchMain-RCE (多个payload，写入哥斯拉 3.03 密码 yes)  
 landrayoa_fileupload_sysSearch-RCE (默认写入冰蝎4.0.3aes)
 
 用友:  
 yongyou_chajet_RCE (用友畅捷通T+ rce 默认写入哥斯拉 Cshap/Cshap_aes_base64)  
-yongyou_chajet_反序列化RCE(可直接执行系统命令)
+yongyou_chajet_反序列化RCE(可直接执行系统命令)  
 yongyou_NC_FileReceiveServlet-RCE 反序列化rce (默认写入冰蝎4.0.3aes)  
 yongyou_NC_bsh.servlet.BshServlet_RCE (可直接执行系统命令)  
 yongyou_NC_jsInovke任意文件上传 (默认写入冰蝎4.0.3aes)  
